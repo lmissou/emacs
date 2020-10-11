@@ -8,7 +8,6 @@
 (yas-global-mode t)
 (setq company-minimum-prefix-length 1);; 输入多少个字开始提示 
 (setq company-idle-delay 0.1);; 提示延迟时间
-(add-to-list 'company-backends '(company-capf :with company-yasnippet))
 ;; 使用company-box前端
 (add-hook 'company-mode-hook 'company-box-mode)
 
