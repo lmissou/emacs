@@ -1,0 +1,27 @@
+# Compiled
+*.elc
+
+# Packaging
+.cask
+
+# Backup files
+*~
+
+# Undo-tree save-files
+*.~undo-tree
+
+# elpa
+/elpa/
+
+# cache
+/.cache/
+
+# lsp
+/.lsp-session-v1
+
+# tmp files
+/url/
+/auto-save-list/
+custom.el
+projectile-bookmarks.eld
+recentf
