@@ -1,8 +1,11 @@
 ;; 启用popwin
 (popwin-mode t)
 ;; 开启浮动提示并设置浮动提示在中心显示
-(ivy-posframe-mode)
 (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+(setq ivy-posframe-parameters
+      '((left-fringe . 8)
+        (right-fringe . 8)))
+(ivy-posframe-mode t)
 ;; 启用文件历史记录
 (recentf-mode t)
 ;; 设置dashboard
