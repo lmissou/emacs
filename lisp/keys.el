@@ -23,16 +23,15 @@
 ;; 代码相关快捷键
 (my/leader-key-def "'" '(hs-toggle-hiding :wk "折叠/展示代码"))
 (my/leader-key-def "/" '(comment-or-uncomment-region :wk "注释代码"))
+(my/leader-key-def "s" '(company-yasnippet :wk "代码片段"))
 ;;------------------------
 
 ;; -----------------------
 ;; 光标跳转快捷键
 (my/leader-key-def "g" '(:wk "跳转")
   "gw" '(avy-goto-word-0 :wk "快速跳转单词")
-  "gs" '(avy-goto-char-timer :wk "搜索跳转")
-  "gj" '(avy-goto-line-below :wk "快速跳转到行(向下)")
-  "gk" '(avy-goto-line-above :wk "快速跳转行(向上)")
-  "gl" '(avy-goto-line :wk "快速跳转行")
+  "gc" '(avy-goto-char-timer :wk "快速跳转到字符（搜索）")
+  "gg" '(avy-goto-line :wk "快速跳转行")
   "gd" '(lsp-find-definition :wk "跳转到定义")
   "gr" '(lsp-find-references :wk "跳转到使用"))
 ;; -----------------------

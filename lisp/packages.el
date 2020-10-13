@@ -23,6 +23,8 @@
     multiple-cursors
     treemacs
     treemacs-all-the-icons
+    treemacs-projectile
+    treemacs-magit
     multi-term
     which-key
     general
