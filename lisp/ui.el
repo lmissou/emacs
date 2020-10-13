@@ -18,16 +18,22 @@
     ;; (registers . 5)
     ))
 
+;; ivy使用all-the-icons
+(all-the-icons-ivy-setup)
 ;; 开启快捷键提示
 (which-key-mode t)
-
-;; 使用icon主题
-(setq neo-theme 'icons)
+;; 设置treemacs
+(treemacs-resize-icons 14)
+;; treemacs使用all-the-icons主题
+(require 'treemacs-all-the-icons)
+(treemacs-load-theme "all-the-icons")
+;; dired文件浏览器使用icon
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 ;; 设置主题
 (load-theme 'doom-one-light t)
-;; 设置mode-line和mode-line主题
-(setq sml/no-confirm-load-theme t)
-(setq sml/theme 'powerline)
-(sml/setup t)
+;; 设置mode-line
+(doom-modeline-init)
+(setq doom-modeline-height 5)
+(setq doom-modeline-bar-width 1)
 
 (provide 'ui)

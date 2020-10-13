@@ -1,11 +1,12 @@
 ;; 需要安装的包
 (defvar my/packages '(
     ;; 主题和modeline
-    smart-mode-line
     dashboard
     all-the-icons
+    all-the-icons-dired
+    all-the-icons-ivy
     doom-themes
-    smart-mode-line-powerline-theme
+    doom-modeline
 
     hungry-delete
     undo-tree
@@ -21,6 +22,7 @@
     counsel-projectile
     multiple-cursors
     treemacs
+    treemacs-all-the-icons
     multi-term
     which-key
     general
@@ -67,7 +69,7 @@
 (package-initialize)
 ;; set package mirrors
 (setq package-archives
-  '(("melpa-tsinghua" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  '(("melpa-tsinghua" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
   ("gnu-tsinghua" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 (setq package-selected-packages my/packages)
 ;; 清除无用的包
