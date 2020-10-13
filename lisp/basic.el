@@ -9,8 +9,6 @@
 ;; 开启鼠标和滚轮
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
-;; 开启行号
-(global-display-line-numbers-mode t)
 ;; 设置光标样式
 (setq-default cursor-type 'bar)
 ;; 当前行高亮

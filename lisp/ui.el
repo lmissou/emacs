@@ -35,5 +35,7 @@
 (doom-modeline-init)
 (setq doom-modeline-height 5)
 (setq doom-modeline-bar-width 1)
+;; 开启行号
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (provide 'ui)

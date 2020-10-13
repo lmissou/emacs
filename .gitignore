@@ -15,8 +15,6 @@
 
 # cache
 /.cache/
-.dap-breakpoints
-/transient/
 
 # lsp
 /.lsp-session-v1
@@ -24,6 +22,8 @@
 # tmp files
 /url/
 /auto-save-list/
+.dap-breakpoints
+/transient/
 custom.el
 projectile-bookmarks.eld
 recentf
