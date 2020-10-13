@@ -17,6 +17,8 @@
 (column-number-mode t)
 ;; 关闭启动界面
 (setq inhibit-splash-screen t)
+;; 去掉scratch默认显示的文字
+(setq initial-scratch-message "")
 ;; 禁止备份文件
 (setq make-backup-files nil)
 (setq auto-save-default nil)

@@ -45,6 +45,7 @@
     yasnippet-snippets
     ;; web前端
     web-mode
+    vue-mode
     emmet-mode
     ;; yaml文件支持
     yaml-mode

@@ -3,6 +3,11 @@
 ;; 项目管理mode
 (projectile-mode t)
 
+;; vue
+(add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face nil)));; 去掉mmm-mode背景色
+
 ;; 开启自动补全
 (global-company-mode t)
 (yas-global-mode t)
@@ -13,7 +18,6 @@
 
 ;; markdown预览命令配置
 (setq markdown-command "grip")
-(setq initial-scratch-message "")
 ;; 启用elisp自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; 启用自动匹配括号,引号等
