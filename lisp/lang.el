@@ -20,6 +20,8 @@
 (setq markdown-command "grip")
 ;; 启用彩虹括号
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; 显示缩进
+(indent-guide-global-mode t)
 ;; 启用elisp自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; 启用自动匹配括号,引号等

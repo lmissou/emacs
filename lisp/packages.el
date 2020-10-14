@@ -18,7 +18,6 @@
     counsel
     ivy-posframe;; 浮动提示
     popwin
-    tabbar
     counsel-projectile
     multiple-cursors
     treemacs
@@ -36,6 +35,8 @@
 
     ;; 彩虹括号
     rainbow-delimiters
+    ;; 显示缩进
+    indent-guide
 
     ;; 代码和自动补全
     flycheck
