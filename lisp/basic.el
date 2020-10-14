@@ -36,6 +36,7 @@
 (global-undo-tree-mode t)
 ;; 设置avy跳转等待时间
 (setq avy-timeout-seconds 0.5)
+;; 使用y/n代替yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (provide 'basic)
