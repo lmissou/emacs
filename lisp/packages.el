@@ -34,6 +34,9 @@
     magit
     projectile
 
+    ;; 彩虹括号
+    rainbow-delimiters
+
     ;; 代码和自动补全
     flycheck
     company
