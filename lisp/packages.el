@@ -47,6 +47,8 @@
     web-mode
     vue-mode
     emmet-mode
+    ;; org-mode
+    org-bullets
     ;; yaml文件支持
     yaml-mode
     ;; javascript

@@ -12,5 +12,6 @@
 (require 'basic)
 (require 'ui)
 (require 'keys)
+(require 'orgmode)
 (require 'lang)
 (require 'lsp)

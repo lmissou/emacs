@@ -37,5 +37,6 @@
 (setq doom-modeline-bar-width 1)
 ;; 开启行号
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 (provide 'ui)
