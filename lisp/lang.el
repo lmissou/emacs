@@ -16,8 +16,6 @@
 ;; 使用company-box前端
 (add-hook 'company-mode-hook 'company-box-mode)
 
-;; markdown预览命令配置
-(setq markdown-command "grip")
 ;; 启用彩虹括号
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;; 显示缩进

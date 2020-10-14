@@ -73,7 +73,8 @@
     ;; lua
     lua-mode
     ;; markdown
-    vmd-mode))
+    markdown-mode
+    ))
 
 (package-initialize)
 ;; set package mirrors
