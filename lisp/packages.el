@@ -82,8 +82,8 @@
 (package-initialize)
 ;; set package mirrors
 (setq package-archives
-  '(("melpa-tsinghua" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-  ("gnu-tsinghua" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  '(("melpa-163" . "http://mirrors.163.com/elpa/melpa/")
+  ("gnu-163" . "http://mirrors.163.com/elpa/gnu/")))
 (setq package-selected-packages my/packages)
 ;; 清除无用的包
 (package-autoremove)
