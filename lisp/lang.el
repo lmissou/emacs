@@ -2,6 +2,8 @@
 (editorconfig-mode t)
 ;; 项目管理mode
 (projectile-mode t)
+;; projectile查找文件使用ivy
+(with-eval-after-load 'projectile (setq projectile-completion-system 'ivy))
 ;; 显示文件变化（git）
 (global-git-gutter-mode t)
 
