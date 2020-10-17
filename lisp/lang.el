@@ -4,9 +4,7 @@
 (projectile-mode t)
 
 ;; vue
-(add-hook 'mmm-mode-hook
-          (lambda ()
-            (set-face-background 'mmm-default-submode-face nil)));; 去掉mmm-mode背景色
+(setq mmm-submode-decoration-level 0);; 去掉mmm-mode背景色
 
 ;; 开启自动补全
 (global-company-mode t)
@@ -20,6 +18,13 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;; 显示缩进
 (indent-guide-global-mode t)
+;; 优化自动缩进，使用TAB和RET不自动缩进
+(add-hook 'vue-mode-hook '(lambda ()
+			    (progn (define-key mmm-mode-map (kbd "<tab>") 'tab-to-tab-stop)
+				   (define-key mmm-mode-map (kbd "M-i") 'indent-for-tab-command)
+				   (define-key mmm-mode-map (kbd "<return>") 'electric-newline-and-maybe-indent)
+				   (define-key mmm-mode-map (kbd "C-<return>") 'newline)
+				   )))
 ;; 启用elisp自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; 启用自动匹配括号,引号等

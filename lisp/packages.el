@@ -62,8 +62,6 @@
     rjsx-mode
     ;; typescript
     typescript-mode
-    ;; vue
-    ;; vue-mode
     ;; dart flutter
     dart-mode
     ;; python
@@ -72,6 +70,8 @@
     lsp-java
     ;; lua
     lua-mode
+    ;; golang
+    go-mode
     ;; markdown
     markdown-mode
     ))

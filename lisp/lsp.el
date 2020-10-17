@@ -13,6 +13,12 @@
 (setq lsp-ui-sideline-enable t)
 (setq lsp-ui-sideline-ignore-duplicate t)
 ;; 开启lsp
-(add-hook 'prog-mode-hook 'lsp)
+(general-add-hook
+ '(js2-mode-hook json-mode-hook css-mode-hook rjsx-mode-hook typescript-mode-hook html-mode-hook web-mode-hook vue-mode-hook
+		 python-mode-hook
+		 dart-mode-hook
+		 java-mode-hook
+		 yaml-mode-hook
+		 ) 'lsp)
 
 (provide 'lsp)
