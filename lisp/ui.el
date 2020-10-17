@@ -10,14 +10,16 @@
 (recentf-mode t)
 ;; 设置dashboard
 (dashboard-setup-startup-hook)
-(setq dashboard-center-content t)
-(setq dashboard-items '(
-    (recents . 8)
-    (projects . 8)
-    (bookmarks . 5)
-    ;; (agenda . 5)
-    ;; (registers . 5)
-    ))
+(setq dashboard-set-file-icons t
+      dashboard-set-heading-icons t
+      dashboard-center-content t
+      dashboard-items '(
+			(recents . 8)
+			(projects . 8)
+			(bookmarks . 5)
+			;; (agenda . 5)
+			;; (registers . 5)
+			))
 
 ;; ivy使用all-the-icons
 (all-the-icons-ivy-setup)
