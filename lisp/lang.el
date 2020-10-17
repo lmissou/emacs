@@ -15,6 +15,12 @@
 (yas-global-mode t)
 (setq company-minimum-prefix-length 1);; 输入多少个字开始提示 
 (setq company-idle-delay 0.1);; 提示延迟时间
+;; company选项选择优化
+(with-eval-after-load 'company
+    (define-key company-active-map (kbd "M-p") nil)
+    (define-key company-active-map (kbd "M-n") nil)
+    (define-key company-active-map (kbd "C-n") #'company-select-next)
+    (define-key company-active-map (kbd "C-p") #'company-select-previous))
 ;; 使用company-box前端
 (add-hook 'company-mode-hook 'company-box-mode)
 
