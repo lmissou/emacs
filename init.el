@@ -15,3 +15,4 @@
 (require 'orgmode)
 (require 'lang)
 (require 'lsp)
+(require 'eaf-config)

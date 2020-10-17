@@ -24,6 +24,7 @@
 /auto-save-list/
 .dap-breakpoints
 /transient/
+/eaf/
 custom.el
 projectile-bookmarks.eld
 recentf
