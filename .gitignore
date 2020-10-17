@@ -25,6 +25,7 @@
 .dap-breakpoints
 /transient/
 /eaf/
+bookmarks
 custom.el
 projectile-bookmarks.eld
 recentf

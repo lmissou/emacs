@@ -10,6 +10,7 @@
 (recentf-mode t)
 ;; 设置dashboard
 (dashboard-setup-startup-hook)
+(setq dashboard-center-content t)
 (setq dashboard-items '(
     (recents . 8)
     (projects . 8)
