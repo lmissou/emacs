@@ -2,6 +2,8 @@
 (editorconfig-mode t)
 ;; 项目管理mode
 (projectile-mode t)
+;; 显示文件变化（git）
+(global-git-gutter-mode t)
 
 ;; vue
 (setq mmm-submode-decoration-level 0);; 去掉mmm-mode背景色

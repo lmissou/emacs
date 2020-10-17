@@ -1,5 +1,9 @@
 ;; 启用popwin
 (popwin-mode t)
+;; NyanCat mode
+(nyan-mode t)
+(nyan-start-animation)
+(nyan-toggle-wavy-trail)
 ;; 开启浮动提示并设置浮动提示在中心显示
 (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
 (setq ivy-posframe-parameters

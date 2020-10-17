@@ -7,6 +7,8 @@
     all-the-icons-ivy
     doom-themes
     doom-modeline
+    ;; Nyancat mode
+    nyan-mode
 
     hungry-delete
     undo-tree
@@ -32,6 +34,7 @@
 
     magit
     projectile
+    git-gutter
 
     ;; 彩虹括号
     rainbow-delimiters
