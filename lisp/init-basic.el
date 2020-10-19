@@ -6,6 +6,7 @@
 (scroll-bar-mode 0)
 ;; 指定Customize文件位置（防止写入init.el）
 (setq custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file)
 ;; 开启鼠标和滚轮
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
