@@ -5,7 +5,7 @@
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 ;; 指定Customize文件位置（防止写入init.el）
-(setq custom-file (expand-file-name "custom.el" config-dir))
+(setq custom-file (locate-user-emacs-file "custom.el"))
 ;; 开启鼠标和滚轮
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
@@ -25,18 +25,30 @@
 (setq recentf-max-menu-items 40)
 ;; 开启图表缓存
 (setq inhibit-compacting-font-caches t)
-;; 删除选中的内容
-(global-hungry-delete-mode t)
 ;; 输入覆盖选中的块
 (delete-selection-mode t)
 ;; 解决tab缩进问题
 (setq default-tab-width 4)
 (setq indent-tabs-mode nil)
-;; 全局开启undo-tree优化重做撤销
-(global-undo-tree-mode t)
 ;; 设置avy跳转等待时间
 (setq avy-timeout-seconds 0.5)
 ;; 使用y/n代替yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(provide 'basic)
+;; 全局开启undo-tree优化重做撤销
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode t))
+
+;; 删除选中的内容
+(use-package hungry-delete
+  :config
+  (global-hungry-delete-mode t))
+
+;; 多光标
+(use-package multiple-cursors)
+
+;; 快速跳转
+(use-package avy)
+
+(provide 'init-basic)

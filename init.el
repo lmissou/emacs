@@ -1,18 +1,15 @@
 ;; my emacs config init
-
-(defvar config-dir (file-name-directory load-file-name)
-  "The config dir of the Emacs.")
-(defvar config-lisp-dir (expand-file-name "lisp" config-dir)
+(defvar config-lisp-dir (locate-user-emacs-file "lisp")
   "The lisp config dir")
 ;; add lisp dir to load-path
 (add-to-list 'load-path config-lisp-dir)
 
-(require 'packages)
-(require 'funcs)
-(require 'basic)
-(require 'ui)
-(require 'keys)
-(require 'orgmode)
-(require 'lang)
-(require 'lsp)
-(require 'eaf-config)
+(require 'init-elpa)
+(require 'init-funcs)
+(require 'init-basic)
+(require 'init-ui)
+(require 'init-keys)
+(require 'init-org)
+(require 'init-prog)
+(require 'init-lsp)
+(require 'init-eaf)

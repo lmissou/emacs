@@ -1,7 +1,13 @@
-;; org-mode配置
-(setq org-bullets-bullet-list '("☰" "☷" "✿" "☭"))
-(add-hook 'org-mode-hook 'org-bullets-mode)
+;; org-bullets
+(use-package org-bullets
+  :hook
+  (org-mode . org-bullets-mode)
+  :config
+  (setq org-bullets-bullet-list '("☰" "☷" "✿" "☭")))
+
+;; org-mode图片固定大小设置
 (setq org-image-actual-width (/ (display-pixel-width) 3))
+
 ;; org-babel配置
 (org-babel-do-load-languages
       'org-babel-load-languages
@@ -12,4 +18,4 @@
 	(latex . t)
         ))
 
-(provide 'orgmode)
+(provide 'init-org)
