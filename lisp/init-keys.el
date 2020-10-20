@@ -1,12 +1,14 @@
 ;; leader键
 (defvar my/leader-key ",")
-(global-unset-key (kbd my/leader-key))
-(global-set-key (kbd (concat my/leader-key my/leader-key)) '(lambda () (interactive) (insert ",")))
 
 ;; which-key快捷键提示
 (use-package which-key
   :config
   (which-key-mode t)
+  (which-key-setup-minibuffer)
+  (global-unset-key (kbd my/leader-key))
+  (global-set-key (kbd (concat my/leader-key my/leader-key)) '(lambda () (interactive) (insert my/leader-key)))
+  (which-key-add-key-based-replacements ", ," "插入，")
   (use-package general
     :config
     (general-create-definer my/leader-key-def

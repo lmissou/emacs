@@ -45,6 +45,9 @@
 
 ;; treemacs文件目录树
 (use-package treemacs
+  :bind (:map treemacs-mode-map
+	      ("j" . treemacs-next-line)
+	      ("k" . treemacs-previous-line))
   :config
   (treemacs-resize-icons 14)
   ;; treemacs的all-the-icons主题
