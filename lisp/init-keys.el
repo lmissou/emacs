@@ -1,6 +1,7 @@
 ;; leader键
-(defvar my/leader-key "M-n")
+(defvar my/leader-key ",")
 (global-unset-key (kbd my/leader-key))
+(global-set-key (kbd (concat my/leader-key my/leader-key)) '(lambda () (interactive) (insert ",")))
 
 ;; which-key快捷键提示
 (use-package which-key
@@ -45,7 +46,8 @@
     ;;------------------------
     ;; 项目相关快捷键
     (my/leader-key-def "p" '(:wk "项目")
-      "pp" '(counsel-projectile-switch-project :wk "切换项目")
+      "pp" '(projectile-command-map :wk "更多命令")
+      "ps" '(counsel-projectile-switch-project :wk "切换项目")
       "pf" '(counsel-projectile-find-file :wk "打开项目文件")
       "pb" '(counsel-projectile-switch-to-buffer :wk "切换项目buffer")
       "ps" '(counsel-projectile-grep :wk "在项目中搜索")
