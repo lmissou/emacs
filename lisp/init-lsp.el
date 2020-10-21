@@ -2,14 +2,15 @@
 (use-package lsp-mode
   :defer t
   :hook ((js2-mode json-mode rjsx-mode typescript-mode
-		    css-mode html-mode web-mode vue-mode
-		    go-mode
-		    lua-mode
-		    python-mode
-		    dart-mode
-		    java-mode
-		    yaml-mode
-		    ) . lsp)
+		   css-mode html-mode web-mode vue-mode
+		   c-mode c++-mode
+		   go-mode
+		   lua-mode
+		   python-mode
+		   dart-mode
+		   java-mode
+		   yaml-mode
+		   ) . lsp)
   :config
   ;; 设置异步获取提示
   (setq lsp--document-symbols-request-async t)
