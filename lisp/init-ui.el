@@ -34,7 +34,7 @@
 ;; 连字firacode
 (use-package fira-code-mode
   :custom (fira-code-mode-disabled-ligatures '("[]" "#{" "#(" "#_" "#_(" "x"))
-  :hook ((prog-mode text-mode) . fira-code-mode))
+  :hook (prog-mode . fira-code-mode))
 
 ;; 图标显示 all-the-icons
 (use-package all-the-icons
