@@ -46,6 +46,9 @@
   :config
   (global-hungry-delete-mode t))
 
+;; 快速选择
+(use-package expand-region)
+
 ;; 多光标
 (use-package multiple-cursors)
 
