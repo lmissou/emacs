@@ -1,1 +1,10 @@
 * 我的Emacs配置
+
+** 注意事项
+*** 中英文等宽设置
+在<your-.emacs.d-dir>/custom.el里加入如下代码设置字体及大小即可，函数 ~my/set-font~ 定义在lisp/init-funcs.el里
+#+BEGIN_SRC emacs-lisp
+  (my/set-font english-font chinese-font english-font-size chinese-font-size)
+  ;; 例如：
+  (my/set-font   "Source Code Pro" "WenQuanYi Micro Hei Mono" 13 16)
+#+END_SRC
