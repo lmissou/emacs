@@ -8,3 +8,16 @@
   ;; 例如：
   (my/set-font   "Source Code Pro" "WenQuanYi Micro Hei Mono" 13 16)
 #+END_SRC
+
+*** eaf应用网络代理设置
+在<your-.emacs.d-dir>/custom.el里加入如下代码设置eaf网络代理
+#+BEGIN_SRC emacs-lisp
+  (setq eaf-proxy-type "http")
+  (setq eaf-proxy-host "127.0.0.1")
+  (setq eaf-proxy-port "1080")
+#+END_SRC
+如果你使用Socks5代理，你可以设置代理类型为：
+#+BEGIN_SRC emacs-lisp
+  (setq eaf-proxy-type "socks5")
+#+END_SRC
+
