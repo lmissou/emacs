@@ -1,6 +1,12 @@
 * 我的Emacs配置
 
 ** 注意事项
+*** 启动时全屏(根据用户设置的变量my/maximized决定是否全屏)
+如果希望启动emacs自动全屏显示，在<your-.emacs.d-dir>/custom.el里加入如下代码
+#+BEGIN_SRC emacs-lisp
+  (setq my/maximized t)
+#+END_SRC
+
 *** 中英文等宽设置
 在<your-.emacs.d-dir>/custom.el里加入如下代码设置字体及大小即可，函数 ~my/set-font~ 定义在lisp/init-funcs.el里
 #+BEGIN_SRC emacs-lisp

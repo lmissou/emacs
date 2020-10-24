@@ -1,5 +1,6 @@
-;; 启动时全屏
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
+;; 启动时全屏(根据用户设置的变量my/maximized决定是否全屏)
+(if (and (boundp 'my/maximized) my/maximized)
+    (setq initial-frame-alist '((fullscreen . maximized))))
 ;; 隐藏菜单栏工具栏滚动条
 (tool-bar-mode 0)
 (menu-bar-mode 0)
