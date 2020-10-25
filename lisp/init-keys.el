@@ -22,11 +22,6 @@
     (general-define-key "C-x C-f" '(counsel-find-file :wk "打开文件"))
     (general-define-key "C-x b" '(counsel-switch-buffer :wk "切换buffer"))
     (general-define-key "C-x C-r" '(counsel-recentf :wk "文件历史记录"))
-    ;; 使用ace切换窗口
-    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-    (general-define-key "M-o" '(ace-window :wk "切换窗口"))
-    ;; 多光标支持
-    (general-define-key "C-S-<mouse-1>" '(mc/add-cursor-on-click :wk "添加多光标"))
 
     ;;------------------------
     ;; 代码相关快捷键
@@ -52,7 +47,7 @@
       "ps" '(counsel-projectile-switch-project :wk "切换项目")
       "pf" '(counsel-projectile-find-file :wk "打开项目文件")
       "pb" '(counsel-projectile-switch-to-buffer :wk "切换项目buffer")
-      "ps" '(counsel-projectile-grep :wk "在项目中搜索")
+      "ps" '(counsel-projectile-rg :wk "在项目中搜索")
       "p'" '(my/multi-term-dedicated-toggle-select :wk "打开终端"))
     ;;------------------------
 

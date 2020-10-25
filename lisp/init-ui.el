@@ -65,9 +65,11 @@
   (use-package treemacs-projectile))
 
 ;; 主题doom-themes
-(use-package doom-themes
-  :config
-  (load-theme 'doom-one-light t))
+(use-package doom-themes)
+;; 可在custom.el里设置my/theme变量作为主题，如果没有设置则使用doom-dracula主题
+(if (not (boundp 'my/theme))
+    (setq my/theme 'doom-dracula))
+(load-theme my/theme t)
 
 ;; doom-mode-line
 (use-package doom-modeline
