@@ -1,25 +1,13 @@
 # Compiled
 *.elc
 
-# Packaging
-.cask
-
-# Backup files
-*~
-
-# Undo-tree save-files
-*.~undo-tree
-
-# elpa
-/elpa/
-
-# cache
-/.cache/
-
-# lsp
-/.lsp-session-v1
-
 # tmp files
+.cask
+*~
+*.~undo-tree
+/elpa/
+/.cache/
+/.lsp-session-v1
 /url/
 /auto-save-list/
 .dap-breakpoints
@@ -30,3 +18,4 @@ custom.el
 projectile-bookmarks.eld
 projectile.cache
 recentf
+.mc-lists.el
