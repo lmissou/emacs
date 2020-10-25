@@ -1,6 +1,6 @@
 * 我的Emacs配置
 
-** 注意事项
+** 常用设置方法
 *** 启动时全屏(根据用户设置的变量my/maximized决定是否全屏)
 如果希望启动emacs自动全屏显示，在<your-.emacs.d-dir>/custom.el里加入如下代码
 #+BEGIN_SRC emacs-lisp
@@ -15,6 +15,12 @@
   (my/set-font   "Source Code Pro" "WenQuanYi Micro Hei Mono" 13 16)
 #+END_SRC
 
+*** 切换主题
+在<your-.emacs.d-dir>/custom.el里加入如下代码设置主题
+#+BEGIN_SRC emacs-lisp
+  (setq my/theme 'doom-dracula)
+#+END_SRC
+
 *** eaf应用网络代理设置
 在<your-.emacs.d-dir>/custom.el里加入如下代码设置eaf网络代理
 #+BEGIN_SRC emacs-lisp
@@ -27,3 +33,7 @@
   (setq eaf-proxy-type "socks5")
 #+END_SRC
 
+*** 多光标编辑快捷键（mulitiple-cursors）
+Ctrl+Shift+鼠标左键单击添加光标
+C-M-p：在上一行添加光标
+C-M-n：在下一行添加光标
