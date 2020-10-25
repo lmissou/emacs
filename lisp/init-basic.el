@@ -37,33 +37,4 @@
 ;; 使用y/n代替yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; 全局开启undo-tree优化重做撤销
-(use-package undo-tree
-  :config
-  (global-undo-tree-mode t))
-
-;; 删除选中的内容
-(use-package hungry-delete
-  :config
-  (global-hungry-delete-mode t))
-
-;; 窗口跳转
-(use-package ace-window
-  :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind (("M-o" . ace-window)))
-
-;; 快速选择
-(use-package expand-region
-  :bind (("C-=" . er/expand-region)))
-
-;; 多光标
-(use-package multiple-cursors
-  :bind (("C-S-<mouse-1>" . mc/add-cursor-on-click)
-	 ("C-M-p" . mc/mmlte--up)
-	 ("C-M-n" . mc/mmlte--down)))
-
-;; 快速跳转
-(use-package avy)
-
 (provide 'init-basic)

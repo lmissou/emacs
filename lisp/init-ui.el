@@ -49,21 +49,6 @@
   (use-package all-the-icons-dired
     :hook (dired-mode . all-the-icons-dired-mode)))
 
-;; treemacs文件目录树
-(use-package treemacs
-  :bind (:map treemacs-mode-map
-	      ("j" . treemacs-next-line)
-	      ("k" . treemacs-previous-line))
-  :config
-  (treemacs-resize-icons 14)
-  ;; treemacs的all-the-icons主题
-  (use-package treemacs-all-the-icons
-    :config
-    (require 'treemacs-all-the-icons)
-    (treemacs-load-theme "all-the-icons"))
-  (use-package treemacs-magit)
-  (use-package treemacs-projectile))
-
 ;; 主题doom-themes
 (use-package doom-themes)
 ;; 可在custom.el里设置my/theme变量作为主题，如果没有设置则使用doom-dracula主题
