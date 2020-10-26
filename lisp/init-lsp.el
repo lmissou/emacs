@@ -25,7 +25,7 @@
     :hook (lsp-mode . lsp-ui-mode)
     :config
     (setq lsp-ui-peek-enable t)
-    (setq lsp-ui-doc-enable nil)
+    (setq lsp-ui-doc-enable t)
     (setq lsp-ui-imenu-enable t)
     (setq lsp-ui-flycheck-enable t)
     (setq lsp-ui-sideline-enable t)
