@@ -1,7 +1,9 @@
 ;; lsp
 (use-package lsp-mode
   :defer t
-  :hook ((js2-mode json-mode rjsx-mode typescript-mode
+  :commands lsp
+  :bind-keymap ((", l" . lsp-command-map))
+  :hook (((js2-mode json-mode rjsx-mode typescript-mode
 		   css-mode html-mode web-mode vue-mode
 		   c-mode c++-mode
 		   go-mode
@@ -11,6 +13,7 @@
 		   java-mode
 		   yaml-mode
 		   ) . lsp)
+		     (lsp-mdoe . lsp-enable-which-key-integration))
   :config
   ;; 设置异步获取提示
   (setq lsp--document-symbols-request-async t)
