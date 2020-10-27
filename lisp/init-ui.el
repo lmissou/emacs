@@ -39,15 +39,18 @@
 
 ;; 图标显示 all-the-icons
 (use-package all-the-icons
-  :bind (("C-' C-i" . all-the-icons-insert))
+  :bind (("C-' C-i" . all-the-icons-insert)))
+
+;; ivy使用all-the-icons
+(use-package all-the-icons-ivy
+  :after all-the-icons ivy
   :config
-  ;; ivy使用all-the-icons
-  (use-package all-the-icons-ivy
-    :config
-    (all-the-icons-ivy-setup))
-  ;; dired文件浏览器使用all-the-icons
-  (use-package all-the-icons-dired
-    :hook (dired-mode . all-the-icons-dired-mode)))
+  (all-the-icons-ivy-setup))
+
+;; dired文件浏览器使用all-the-icons
+(use-package all-the-icons-dired
+  :after all-the-icons
+  :hook (dired-mode . all-the-icons-dired-mode))
 
 ;; 主题doom-themes
 (use-package doom-themes)

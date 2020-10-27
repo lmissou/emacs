@@ -13,21 +13,25 @@
   (use-package editorconfig-generate))
 
 ;; ivy
-(use-package ivy
+(use-package ivy)
+
+(use-package counsel)
+
+(use-package counsel-projectile)
+
+;; 优化搜索
+(use-package swiper)
+
+;; ivy-posframe浮动提示
+(use-package ivy-posframe
+  :after ivy
+  :hook (after-init . ivy-posframe-mode)
   :config
-  (use-package counsel
-    :config
-    (use-package counsel-projectile))
-  (use-package swiper)
-  ;; ivy-posframe浮动提示
-  (use-package ivy-posframe
-    :hook (after-init . ivy-posframe-mode)
-    :config
-    ;; 设置浮动提示在中心显示
-    (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-    (setq ivy-posframe-parameters
-	  '((left-fringe . 8)
-	    (right-fringe . 8)))))
+  ;; 设置浮动提示在中心显示
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  (setq ivy-posframe-parameters
+	'((left-fringe . 8)
+	  (right-fringe . 8))))
 
 ;; 项目管理 projcecilt
 (use-package projectile

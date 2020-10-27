@@ -35,18 +35,23 @@
 	      ("j" . treemacs-next-line)
 	      ("k" . treemacs-previous-line))
   :config
-  (treemacs-resize-icons 14)
-  ;; treemacs的all-the-icons主题
-  (use-package treemacs-all-the-icons
-    :config
-    (require 'treemacs-all-the-icons)
-    (treemacs-load-theme "all-the-icons"))
-  (use-package treemacs-magit)
-  (use-package treemacs-projectile))
+  (treemacs-resize-icons 14))
+
+;; treemacs的all-the-icons主题
+(use-package treemacs-all-the-icons
+  :after treemacs
+  :config
+  (require 'treemacs-all-the-icons)
+  (treemacs-load-theme "all-the-icons"))
+
+(use-package treemacs-magit
+  :after treemacs)
+(use-package treemacs-projectile
+  :after treemacs)
 
 ;; 有道词典
 (use-package youdao-dictionary
-  :bind ("C-c y" . youdao-dictionary-search-at-point)
+  :bind ("C-c t" . youdao-dictionary-search-at-point)
   :config
   (setq url-automatic-caching t))
 
