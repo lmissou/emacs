@@ -51,7 +51,7 @@
 
 ;; 有道词典
 (use-package youdao-dictionary
-  :bind ("C-c t" . youdao-dictionary-search-at-point)
+  :bind ("C-c t" . youdao-dictionary-search-async)
   :config
   (setq url-automatic-caching t))
 
