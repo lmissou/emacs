@@ -27,7 +27,9 @@
 	 ("C-M-n" . mc/mmlte--down)))
 
 ;; 快速跳转
-(use-package avy)
+(use-package avy
+  :config
+  (setq avy-timeout-seconds 0.3))
 
 ;; treemacs文件目录树
 (use-package treemacs

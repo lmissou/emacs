@@ -1,5 +1,3 @@
-(require 'cl)
-
 ;; 开关内置终端
 (defun my/multi-term-dedicated-toggle-select ()
   "开关内置终端"
