@@ -68,15 +68,17 @@
     "wh" '(split-window-horizontally :wk "横向分割窗口")
     "wv" '(split-window-vertically :wk "纵向分割窗口")
     "wo" '(delete-other-windows :wk "关闭其他窗口")
-    "wd" '(delete-window :wk "关闭窗口")
+    "wq" '(delete-window :wk "关闭窗口")
     "ww" '(ace-window :wk "切换窗口"))
   ;;------------------------
 
   ;;------------------------
   ;; buffer相关快捷键
   (my/leader-key-def "b" '(:wk "缓冲区")
-    "bk" '(kill-buffer :wk "关闭缓冲区")
-    "bb" '(counsel-switch-buffer :wk "切换缓冲区"))
+    "bb" '(counsel-switch-buffer :wk "切换缓冲区")
+    "bd" '(kill-buffer :wk "关闭缓冲区")
+    "bn" '(switch-to-next-buffer :wk "下一个缓冲区")
+    "bp" '(switch-to-prev-buffer :wk "上一个缓冲区"))
   ;;------------------------
   )
 
