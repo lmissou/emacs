@@ -84,6 +84,11 @@
 ;; markdown
 (use-package markdown-mode)
 
+;; c# unity3d
+(use-package csharp-mode
+  :config
+  (unbind-key (kbd ",") csharp-mode-map))
+
 ;; golang
 (use-package go-mode)
 
