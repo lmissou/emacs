@@ -36,7 +36,7 @@
   ;; 光标跳转快捷键
   (my/leader-key-def "g" '(:wk "跳转")
     "gw" '(avy-goto-word-0 :wk "快速跳转单词")
-    "gc" '(avy-goto-char-timer :wk "快速跳转到字符（搜索）")
+    "gs" '(avy-goto-char-timer :wk "快速跳转到字符（搜索）")
     "gg" '(avy-goto-line :wk "快速跳转行")
     "gd" '(lsp-find-definition :wk "跳转到定义")
     "gr" '(lsp-find-references :wk "跳转到使用"))

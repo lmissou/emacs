@@ -41,6 +41,11 @@
 
 ;; 调试程序 dap-mode
 (use-package dap-mode
-  :after lsp-mode)
+  :after lsp-mode
+  :config
+  (require 'dap-python)
+  (require 'dap-node)
+  (require 'dap-go)
+  (require 'dap-chrome))
 
 (provide 'init-lsp)
