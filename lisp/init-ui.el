@@ -79,7 +79,7 @@
 (use-package doom-themes)
 ;; 可在custom.el里设置my/theme变量作为主题，如果没有设置则使用doom-dracula主题
 (if (not (boundp 'my/theme))
-    (setq my/theme 'doom-dracula))
+    (setq my/theme 'doom-one))
 (load-theme my/theme t)
 
 ;; doom-mode-line
