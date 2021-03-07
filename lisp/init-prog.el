@@ -102,23 +102,37 @@
 (use-package dart-mode)
 
 ;; web前端
-(use-package web-mode)
-(use-package emmet-mode)
+(use-package web-mode
+  :mode "\\.html?\\'"
+  :config
+  (setq-default web-mode-markup-indent-offset 2
+		web-mode-script-padding 2
+		web-mode-style-padding 2
+		web-mode-css-indent-offset 2
+		web-mode-code-indent-offset 2
+		web-mode-enable-auto-closing t
+		web-mode-enable-auto-pairing t
+		web-mode-enable-css-colorization t)
+  (use-package emmet-mode
+    :hook ((web-mode css-mode js-mode rjsx-mode) . emmet-mode)
+    :config
+    (setq emmet-self-closing-tag-style " /")))
 
 ;; javascript/typescript/json
-(use-package js2-mode)
 (use-package typescript-mode)
 (use-package json-mode)
-(use-package rjsx-mode)
+(use-package rjsx-mode
+  :mode "\\.tsx\\'"
+  :hook ((js-mode . js-jsx-enable)))
+
+;; 优化mmm-mode支持editorconfig
+(use-package mmm-mode
+  ;; 优化html/vue中的js和css的缩进
+  :hook ((mmm-js-mode-submode . editorconfig-apply)
+	 (mmm-css-mode-submode . editorconfig-apply)))
 
 ;; vue
 (use-package vue-mode
-  ;; 优化vue-mode自动缩进，使用TAB和RET不自动缩进
-  :bind (:map mmm-mode-map
-	      ("<tab>" . 'tab-to-tab-stop)
-	      ("M-i" . 'indent-for-tab-command)
-	      ("<return>" . 'electric-newline-and-maybe-indent)
-	      ("C-<return>" . 'newline))
   :config
   ;; 去掉mmm-mode背景色
   (setq mmm-submode-decoration-level 0))
