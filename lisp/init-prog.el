@@ -41,7 +41,8 @@
   (setq projectile-completion-system 'ivy))
 
 ;; emacs内置终端 multi-term
-(use-package multi-term)
+(use-package multi-term
+  :bind ("C-~" . my/multi-term-dedicated-toggle-select))
 
 ;; 显示git文件变化（git-gutter）
 (use-package git-gutter

@@ -50,8 +50,7 @@
     "ps" '(counsel-projectile-switch-project :wk "切换项目")
     "pf" '(counsel-projectile-find-file :wk "打开项目文件")
     "pb" '(counsel-projectile-switch-to-buffer :wk "切换项目buffer")
-    "ps" '(counsel-projectile-rg :wk "在项目中搜索")
-    "p'" '(my/multi-term-dedicated-toggle-select :wk "打开终端"))
+    "ps" '(counsel-projectile-rg :wk "在项目中搜索"))
   ;;------------------------
 
   ;;------------------------
