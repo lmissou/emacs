@@ -82,11 +82,12 @@
     (setq my/theme 'doom-one))
 (load-theme my/theme t)
 
-;; doom-mode-line
+;; doom-modeline
 (use-package doom-modeline
+  :hook (after-init . doom-modeline-mode)
   :config
-  (setq doom-modeline-height 5)
-  (setq doom-modeline-bar-width 1)
-  (doom-modeline-init))
+  (setq doom-modeline-height 5
+	doom-modeline-bar-width 1
+	doom-modeline-indent-info t))
 
 (provide 'init-ui)
