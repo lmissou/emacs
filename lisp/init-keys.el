@@ -1,6 +1,5 @@
 ;; leader键
-(defvar my/leader-key "M-n")
-
+(defvar my/leader-key "C-'")
 ;; which-key快捷键提示
 (use-package which-key
   :config

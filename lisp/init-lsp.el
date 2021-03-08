@@ -2,7 +2,7 @@
 (use-package lsp-mode
   :defer t
   :commands lsp
-  :bind-keymap (("M-n l" . lsp-command-map))
+  :bind-keymap (("C-' l" . lsp-command-map))
   :hook (((js-mode js2-mode json-mode rjsx-mode typescript-mode
 		    css-mode html-mode web-mode vue-mode
 		    c-mode c++-mode csharp-mode

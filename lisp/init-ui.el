@@ -3,7 +3,9 @@
 ;; 开启行号
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
-
+;; 平滑滚动
+(use-package smooth-scrolling
+  :hook (after-init . smooth-scrolling-mode))
 ;; popwin
 (use-package popwin
   :config

@@ -8,9 +8,10 @@
 
 ;; editorconfig
 (use-package editorconfig
-  :hook (after-init . editorconfig-mode)
-  :config
-  (use-package editorconfig-generate))
+  :hook (after-init . editorconfig-mode))
+
+(use-package editorconfig-generate
+  :after editorconfig)
 
 ;; ivy
 (use-package ivy)
@@ -64,17 +65,17 @@
   :config
   (setq company-minimum-prefix-length 1);; 输入多少个字开始提示 
   (setq company-idle-delay 0.1);; 提示延迟时间
-  ;; 使用company-box前端
-  (use-package company-box
-    :hook (company-mode . company-box-mode)))
+  )
+;; 使用company-box前端
+(use-package company-box
+  :after company
+  :hook (company-mode . company-box-mode))
 
 ;; 代码片段 yasnippet
 (use-package yasnippet
-  :hook (after-init . yas-global-mode)
-  :config
-  ;; 自动导入yasnippet
-  ;;(require 'yasnippet)
-  (use-package yasnippet-snippets))
+  :hook (after-init . yas-global-mode))
+(use-package yasnippet-snippets
+  :after yasnippet)
 
 ;; 代码检查 flycheck
 (use-package flycheck)
@@ -113,18 +114,19 @@
 		web-mode-code-indent-offset 2
 		web-mode-enable-auto-closing t
 		web-mode-enable-auto-pairing t
-		web-mode-enable-css-colorization t)
-  (use-package emmet-mode
-    :hook ((web-mode css-mode js-mode rjsx-mode) . emmet-mode)
-    :config
-    (setq emmet-self-closing-tag-style " /")))
+		web-mode-enable-css-colorization t))
+(use-package emmet-mode
+  :after web-mode
+  :hook ((web-mode vue-mode css-mode js-mode js2-mode rjsx-mode) . (lambda () (emmet-mode t)))
+  :config
+  (setq emmet-self-closing-tag-style " /"))
 
 ;; javascript/typescript/json
 (use-package typescript-mode)
 (use-package json-mode)
 (use-package rjsx-mode
-  :mode "\\.tsx\\'"
-  :hook ((js-mode . js-jsx-enable)))
+  :mode ("\\.js\\'" "\\.jsx\\'" "\\.tsx\\'")
+  :config (setq-default js2-mode-show-strict-warnings nil))
 
 ;; 优化mmm-mode支持editorconfig
 (use-package mmm-mode
