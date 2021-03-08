@@ -137,8 +137,9 @@
 ;; vue
 (use-package vue-mode
   :config
-  ;; 去掉mmm-mode背景色
-  (setq mmm-submode-decoration-level 0))
+  (setq-default mmm-submode-decoration-level 0 ;; 去掉mmm-mode背景色
+		vue-html-extra-indent 2 ;; vue但文件组件template里的内容首行缩进
+		))
 
 ;; 启用elisp自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
