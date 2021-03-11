@@ -16,7 +16,8 @@
 ;; ivy
 (use-package ivy)
 
-(use-package counsel)
+(use-package counsel
+  :bind ("M-y" . counsel-yank-pop))
 
 (use-package counsel-projectile)
 

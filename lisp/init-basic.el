@@ -36,5 +36,8 @@
 (setq avy-timeout-seconds 0.5)
 ;; 使用y/n代替yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
+;; 优化转换大小写
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (provide 'init-basic)
