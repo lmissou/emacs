@@ -22,3 +22,7 @@ projectile.cache
 recentf
 .mc-lists.el
 .lsp-eslint-choices
+.org-id-locations
+org-manual.css
+org-roam.db
+tramp

@@ -1,6 +1,4 @@
 [submodule "site-lisp/ligature"]
 	path = site-lisp/ligature
 	url = https://github.com/mickeynp/ligature.el.git
-[submodule "site-lisp/emacs-application-framework"]
-	path = site-lisp/emacs-application-framework
-	url = https://github.com/manateelazycat/emacs-application-framework.git
+
