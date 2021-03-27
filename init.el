@@ -9,6 +9,7 @@
 (require 'init-basic)
 (require 'init-ui)
 (require 'init-keys)
+(require 'init-meow)
 (require 'init-org)
 (require 'init-tool)
 (require 'init-prog)

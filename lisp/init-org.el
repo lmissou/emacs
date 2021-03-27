@@ -21,8 +21,9 @@
 			    ("#+BEGIN_QUOTE" . "")
 			    ("#+END_QUOTE" . "")
 			    ("#+HEADERS" . "")
-			    ("#+TITLE:" . "")
 			    ("#+RESULTS:" . "")
+			    ("#+TBLFM:" . "")
+			    ("#+CAPTION:" . "")
 			    ("#+archive:" . "")
 			    ("#+author:" . "")
 			    ("#+creator:" . "")
@@ -39,7 +40,8 @@
 			    ("#+end_quote" . "")
 			    ("#+headers" . "")
 			    ("#+results:" . "")
-			    ("#+title:" . "")))
+			    ("#+tblfm:" . "")
+			    ("#+caption:" . "")))
   (org-bullets-bullet-list '("☰" "☷" "☯" "☭")))
 
 ;; org-roam
@@ -48,6 +50,11 @@
       (after-init . org-roam-mode)
       :custom
       (org-roam-directory "~/Documents/orgNotes/")
+      (org-roam-capture-templates
+       '(("d" "default" plain (function org-roam-capture--get-point)
+          "%?"
+          :file-name "${slug}"
+          :head "#+TITLE: ${title}\n#+DATE: %T\n")))
       :bind (:map org-roam-mode-map
               (("C-; n l" . org-roam)
                ("C-; n f" . org-roam-find-file)
