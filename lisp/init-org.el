@@ -42,7 +42,9 @@
 			    ("#+results:" . "")
 			    ("#+tblfm:" . "")
 			    ("#+caption:" . "")))
-  (org-bullets-bullet-list '("☰" "☷" "☯" "☭")))
+  (org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
+  ;; 默认不折叠标题
+  (org-startup-folded nil))
 
 ;; org-roam
 (use-package org-roam
@@ -54,7 +56,7 @@
        '(("d" "default" plain (function org-roam-capture--get-point)
           "%?"
           :file-name "${slug}"
-          :head "#+TITLE: ${title}\n#+DATE: %T\n")))
+          :head "#+title: ${title}\n#+date: %T\n")))
       :bind (:map org-roam-mode-map
               (("C-; n l" . org-roam)
                ("C-; n f" . org-roam-find-file)

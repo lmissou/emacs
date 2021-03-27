@@ -7,6 +7,12 @@
   (meow-leader-define-key
    '("a g" . avy-goto-line)
    '("a w" . avy-goto-word-0)
+   '("a s" . avy-goto-char-timer)
+   '("b b" . counsel-switch-buffer)
+   '("b d" . kill-buffer)
+   '("w w" . ace-window)
+   '("w q" . delete-window)
+   '("w o" . delete-other-windows)
    ;; SPC j/k will run the original command in MOTION state.
    '("j" . meow-motion-origin-command)
    '("k" . meow-motion-origin-command)
