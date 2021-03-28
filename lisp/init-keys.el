@@ -17,6 +17,8 @@
     :prefix my/leader-key
     :wk "leader")
   (general-define-key "C-s" 'swiper);; 搜索
+  (general-define-key "C-'" 'hs-toggle-hiding);; 折叠代码
+  (general-define-key "M-/" 'comment-or-uncomment-region);; 注释或取消注释
   (general-define-key "M-x" 'counsel-M-x);; 执行命令
   (general-define-key "C-h C-f" '(counsel-describe-function :wk "查看函数"))
   (general-define-key "C-h C-v" '(counsel-describe-variable :wk "查看变量"))
@@ -27,8 +29,6 @@
 
   ;;------------------------
   ;; 代码相关快捷键
-  (my/leader-key-def "'" '(hs-toggle-hiding :wk "折叠/展示代码"))
-  (my/leader-key-def "/" '(comment-or-uncomment-region :wk "注释代码"))
   (my/leader-key-def "s" '(company-yasnippet :wk "代码片段"))
   ;;------------------------
 
@@ -46,7 +46,6 @@
   ;; 项目相关快捷键
   (my/leader-key-def "p" '(:wk "项目")
     "pp" '(projectile-command-map :wk "更多命令")
-    "ps" '(counsel-projectile-switch-project :wk "切换项目")
     "pf" '(counsel-projectile-find-file :wk "打开项目文件")
     "pb" '(counsel-projectile-switch-to-buffer :wk "切换项目buffer")
     "ps" '(counsel-projectile-rg :wk "在项目中搜索"))

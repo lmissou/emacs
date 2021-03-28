@@ -142,6 +142,9 @@
 		vue-html-extra-indent 2 ;; vue单文件组件template里的内容首行缩进
 		))
 
+;; 自动启动hs-minor-mode实现代码折叠
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
 ;; 启用elisp自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 ;; 启用自动匹配括号,引号等

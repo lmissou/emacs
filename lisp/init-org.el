@@ -95,5 +95,8 @@
         (js . t)
 	(latex . t)
         ))
+;; 解决org-babel执行js代码错误的问题
+(setq org-babel-js-function-wrapper
+      "console.log(require('util').inspect(function(){\n%s\n}()));")
 
 (provide 'init-org)

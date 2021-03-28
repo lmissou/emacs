@@ -14,7 +14,8 @@
 (use-package ace-window
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind (("M-o" . ace-window)))
+  :bind (("M-o" . other-window)
+	 ("C-M-o" . ace-window)))
 
 ;; 快速选择
 (use-package expand-region
