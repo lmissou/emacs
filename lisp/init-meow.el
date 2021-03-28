@@ -129,5 +129,13 @@
   ;; (meow-setup-line-number)
   ;; 如果你需要自动的 mode-line 设置（如果需要自定义见下文对 `meow-indicator' 说明）
   (meow-setup-indicator))
+;; 使用jk退出插入模式
+(use-package key-chord
+  :hook
+  (after-init . key-chord-mode)
+  :custom
+  (key-chord-two-keys-delay 0.3)
+  :config
+  (key-chord-define meow-insert-state-keymap "jk" 'meow-insert-exit))
 
 (provide 'init-meow)
