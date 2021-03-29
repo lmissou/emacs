@@ -117,11 +117,16 @@
   :init
   (meow-global-mode 1)
   :custom
+  (meow-cursor-type-default '(hbar . 3))
+  (meow-cursor-type-normal '(hbar . 3))
+  (meow-cursor-type-motion '(hbar . 4))
+  (meow-cursor-type-insert '(bar . 2))
+  (meow-cursor-type-keypad 'hollow)
   (meow-replace-state-name-list
-	'((normal . "Ꮚ•ꈊ•Ꮚ")
-	  (insert . "Ꮚ`ꈊ´Ꮚ")
-	  (keypad . "Ꮚ'ꈊ'Ꮚ")
-	  (motion . "Ꮚ-ꈊ-Ꮚ")))
+   '((normal . "Ꮚ•ꈊ•Ꮚ")
+     (insert . "Ꮚ`ꈊ´Ꮚ")
+     (keypad . "Ꮚ'ꈊ'Ꮚ")
+     (motion . "Ꮚ-ꈊ-Ꮚ")))
   :config
   ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
   (meow-setup)

@@ -1,3 +1,6 @@
+;; 指定Customize文件位置（防止写入init.el）
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file)
 ;; 启动时全屏(根据用户设置的变量my/maximized决定是否全屏)
 (if (and (boundp 'my/maximized) my/maximized)
     (setq initial-frame-alist '((fullscreen . maximized))))
@@ -5,14 +8,11 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-;; 指定Customize文件位置（防止写入init.el）
-(setq custom-file (locate-user-emacs-file "custom.el"))
-(load custom-file)
 ;; 开启鼠标和滚轮
 (xterm-mouse-mode t)
 (mouse-wheel-mode t)
 ;; 设置光标样式
-(setq-default cursor-type 'bar)
+;; (setq-default cursor-type 'bar)
 ;; 当前行高亮
 (global-hl-line-mode t)
 ;; 状态栏显示列号
