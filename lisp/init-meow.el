@@ -111,6 +111,7 @@
    '("%" . meow-query-replace-regexp)
    '("/" . swiper)
    '(":" . counsel-M-x)
+   '("<return>" . er/expand-region)
    '("<escape>" . meow-last-buffer)))
 (use-package meow
   :demand t
@@ -131,7 +132,7 @@
   ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
   (meow-setup)
   ;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）
-  ;; (meow-setup-line-number)
+  (meow-setup-line-number)
   ;; 如果你需要自动的 mode-line 设置（如果需要自定义见下文对 `meow-indicator' 说明）
   (meow-setup-indicator))
 ;; 使用jk退出插入模式
