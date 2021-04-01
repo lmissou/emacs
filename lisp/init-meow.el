@@ -117,18 +117,17 @@
   :demand t
   :init
   (meow-global-mode 1)
-  :custom
-  (meow-cursor-type-default '(hbar . 3))
-  (meow-cursor-type-normal '(hbar . 3))
-  (meow-cursor-type-motion '(hbar . 4))
-  (meow-cursor-type-insert '(bar . 2))
-  (meow-cursor-type-keypad 'hollow)
-  (meow-replace-state-name-list
-   '((normal . "Ꮚ•ꈊ•Ꮚ")
-     (insert . "Ꮚ`ꈊ´Ꮚ")
-     (keypad . "Ꮚ'ꈊ'Ꮚ")
-     (motion . "Ꮚ-ꈊ-Ꮚ")))
   :config
+  (setq   meow-cursor-type-default '(hbar . 3)
+	  meow-cursor-type-normal '(hbar . 3)
+	  meow-cursor-type-motion '(hbar . 4)
+	  meow-cursor-type-insert '(bar . 2)
+	  meow-cursor-type-keypad 'hollow
+	  meow-replace-state-name-list
+	  '((normal . "Ꮚ•ꈊ•Ꮚ")
+	    (insert . "Ꮚ`ꈊ´Ꮚ")
+	    (keypad . "Ꮚ'ꈊ'Ꮚ")
+	    (motion . "Ꮚ-ꈊ-Ꮚ")))
   ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
   (meow-setup)
   ;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）
@@ -139,9 +138,8 @@
 (use-package key-chord
   :hook
   (after-init . key-chord-mode)
-  :custom
-  (key-chord-two-keys-delay 0.3)
   :config
+  (setq key-chord-two-keys-delay 0.3)
   (key-chord-define meow-insert-state-keymap "jk" 'meow-insert-exit))
 
 (provide 'init-meow)
