@@ -1,8 +1,16 @@
 ;; 指定Customize文件位置（防止写入init.el）
-(setq custom-file (locate-user-emacs-file "custom.el"))
-(load custom-file)
+(setq custom-file (locate-user-emacs-file ".cache/custom.el"))
+;; 加载自定义配置文件
+(setq my/custom-file (locate-user-emacs-file "custom.el"))
+(load my/custom-file)
+;; 自定义变量初始值
+(defvar my/roam-dir "~/Documents/orgNotes/")
+(defvar my/theme 'doom-one)
+(defvar my/maximized nil)
+(defvar my/leader-key "C-;")
+
 ;; 启动时全屏(根据用户设置的变量my/maximized决定是否全屏)
-(if (and (boundp 'my/maximized) my/maximized)
+(if my/maximized
     (setq initial-frame-alist '((fullscreen . maximized))))
 ;; 隐藏菜单栏工具栏滚动条
 (tool-bar-mode 0)

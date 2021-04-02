@@ -16,6 +16,10 @@
 ;; ivy
 (use-package ivy)
 
+;; ivy-rich
+(use-package ivy-rich
+  :after ivy)
+
 (use-package counsel
   :bind ("M-y" . counsel-yank-pop))
 

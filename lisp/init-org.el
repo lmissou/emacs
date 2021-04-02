@@ -51,7 +51,7 @@
       :hook
       (after-init . org-roam-mode)
       :config
-      (setq org-roam-directory "~/Documents/orgNotes/"
+      (setq org-roam-directory my/roam-dir
 	    org-roam-capture-templates
 	    '(("d" "default" plain (function org-roam-capture--get-point)
                "%?"
@@ -97,6 +97,6 @@
         ))
 ;; 解决org-babel执行js代码错误的问题
 (setq org-babel-js-function-wrapper
-      "console.log(require('util').inspect(function(){\n%s\n}()));")
+      "console.log(function(){\n%s\n}());")
 
 (provide 'init-org)

@@ -63,13 +63,25 @@
 
 ;; 图标显示 all-the-icons
 (use-package all-the-icons
-  :bind (("C-' C-i" . all-the-icons-insert)))
+  :config
+  (set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'prepend))
 
 ;; ivy使用all-the-icons
 (use-package all-the-icons-ivy
   :after all-the-icons ivy
   :config
   (all-the-icons-ivy-setup))
+
+;; ivy-rich使用all-the-icons
+(use-package all-the-icons-ivy-rich
+  :after all-the-icons ivy-rich
+  :hook (after-init . (lambda () (progn (ivy-rich-mode t)
+					(all-the-icons-ivy-rich-mode t)))))
 
 ;; dired文件浏览器使用all-the-icons
 (use-package all-the-icons-dired
@@ -79,8 +91,6 @@
 ;; 主题doom-themes
 (use-package doom-themes)
 ;; 可在custom.el里设置my/theme变量作为主题，如果没有设置则使用doom-dracula主题
-(if (not (boundp 'my/theme))
-    (setq my/theme 'doom-one))
 (load-theme my/theme t)
 
 ;; doom-modeline
