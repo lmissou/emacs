@@ -1,11 +1,15 @@
+(my/use-package 'meow)
+(my/use-package 'key-chord)
+
 ;; meow快捷键配置
+(require 'meow)
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
    '("j" . meow-next)
    '("k" . meow-prev))
   (meow-leader-define-key
-;; 光标跳转快捷键
+   ;; 光标跳转快捷键
    '("a g" . avy-goto-line)
    '("a w" . avy-goto-word-0)
    '("a s" . avy-goto-char-timer)
@@ -113,33 +117,26 @@
    '(":" . counsel-M-x)
    '("<return>" . er/expand-region)
    '("<escape>" . meow-last-buffer)))
-(use-package meow
-  :demand t
-  :init
-  (meow-global-mode 1)
-  :config
-  (setq   meow-cursor-type-default '(hbar . 3)
-	  meow-cursor-type-normal '(hbar . 3)
-	  meow-cursor-type-motion '(hbar . 4)
-	  meow-cursor-type-insert '(bar . 2)
-	  meow-cursor-type-keypad 'hollow
-	  meow-replace-state-name-list
-	  '((normal . "Ꮚ•ꈊ•Ꮚ")
-	    (insert . "Ꮚ`ꈊ´Ꮚ")
-	    (keypad . "Ꮚ'ꈊ'Ꮚ")
-	    (motion . "Ꮚ-ꈊ-Ꮚ")))
-  ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
-  (meow-setup)
-  ;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）
-  (meow-setup-line-number)
-  ;; 如果你需要自动的 mode-line 设置（如果需要自定义见下文对 `meow-indicator' 说明）
-  (meow-setup-indicator))
+(meow-global-mode 1)
+(setq   meow-cursor-type-default '(hbar . 3)
+	meow-cursor-type-normal '(hbar . 3)
+	meow-cursor-type-motion '(hbar . 4)
+	meow-cursor-type-insert '(bar . 2)
+	meow-cursor-type-keypad 'hollow
+	meow-replace-state-name-list
+	'((normal . "Ꮚ•ꈊ•Ꮚ")
+	  (insert . "Ꮚ`ꈊ´Ꮚ")
+	  (keypad . "Ꮚ'ꈊ'Ꮚ")
+	  (motion . "Ꮚ-ꈊ-Ꮚ")))
+;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
+(meow-setup)
+;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）
+(meow-setup-line-number)
+;; 如果你需要自动的 mode-line 设置（如果需要自定义见下文对 `meow-indicator' 说明）
+(meow-setup-indicator)
 ;; 使用jk退出插入模式
-(use-package key-chord
-  :hook
-  (after-init . key-chord-mode)
-  :config
-  (setq key-chord-two-keys-delay 0.3)
-  (key-chord-define meow-insert-state-keymap "jk" 'meow-insert-exit))
+(add-hook 'after-init-hook 'key-chord-mode)
+(setq key-chord-two-keys-delay 0.3)
+(key-chord-define meow-insert-state-keymap "jk" 'meow-insert-exit)
 
 (provide 'init-meow)

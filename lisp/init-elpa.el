@@ -3,11 +3,15 @@
 ;; set package mirrors
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-;;; Init Use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
+;;; My Use-package
+(defun my/use-package (pkg)
+  (if (stringp pkg)
+      (progn
+	(add-to-list 'load-path (concat (locate-user-emacs-file "site-lisp/") pkg))
+	(require (intern pkg)))
+      (progn
+	(unless (package-installed-p pkg)
+	  (package-install pkg))
+	(add-to-list 'package-selected-packages pkg))))
 
 (provide 'init-elpa)
