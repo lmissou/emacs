@@ -24,6 +24,7 @@
 (my/use-package 'python-mode)
 (my/use-package 'lua-mode)
 (my/use-package 'dart-mode)
+(my/use-package 'lsp-dart)
 (my/use-package 'web-mode)
 (my/use-package 'emmet-mode)
 (my/use-package 'typescript-mode)
@@ -70,6 +71,13 @@
 (add-hook 'after-init-hook 'yas-global-mode)
 (with-eval-after-load "csharp-mode"
   (unbind-key (kbd ",") csharp-mode-map))
+;; dart flutter sdk dir设置
+(defvar my/flutter-sdk-dir nil)
+(if (not my/flutter-sdk-dir)
+    (setq my/flutter-sdk-dir (getenv "FLUTTER_HOME")))
+(custom-set-variables
+ '(lsp-dart-flutter-sdk-dir my/flutter-sdk-dir))
+;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (setq-default web-mode-markup-indent-offset 2
 	      web-mode-script-padding 2
