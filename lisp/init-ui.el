@@ -54,7 +54,9 @@
 (add-hook 'after-init-hook 'doom-modeline-mode)
 (setq doom-modeline-height 5
       doom-modeline-bar-width 1
-      doom-modeline-indent-info t)
+      doom-modeline-indent-info t
+      ;; doom-modeline-setup-env-go回导致emacs卡死,原因未知,先禁用
+      doom-modeline-env-enable-go nil)
 ;; 连字显示ligature.el
 ;; 需要设置英文字体为连字字体，如：
 ;; (my/set-font   "FiraCode Nerd Font Mono" "WenQuanYi Micro Hei" 13 16)
