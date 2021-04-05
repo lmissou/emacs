@@ -1,6 +1,7 @@
 (my/use-package 'org-bullets)
 (my/use-package 'org-roam)
 (my/use-package 'org-roam-server)
+(my/use-package 'ob-go)
 
 ;; org-bullets
 (add-hook 'org-mode-hook '(lambda () (progn (org-bullets-mode t) (prettify-symbols-mode t))))
@@ -82,7 +83,9 @@
  '((emacs-lisp . t)
    (shell . t)
    (python . t)
+   (go . t)
    (js . t)
+   (css . t)
    (latex . t)
    ))
 ;; 解决org-babel执行js代码错误的问题
