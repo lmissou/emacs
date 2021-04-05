@@ -78,6 +78,8 @@
    '("F" . meow-find-expand)
    '("g g" . beginning-of-buffer)
    '("G" . end-of-buffer)
+   '("g d" . lsp-find-definition)
+   '("g r" . lsp-find-implementation)
    '("h" . meow-left)
    '("H" . meow-left-expand)
    '("i" . meow-insert)
