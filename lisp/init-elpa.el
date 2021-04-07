@@ -17,5 +17,7 @@
 	    (setq my/package-contents-refreshed t))
 	  (package-install pkg))
 	(add-to-list 'package-selected-packages pkg))))
+(defmacro my/use-packagem (pkg)
+  (list 'my/use-package (list 'quote pkg)))
 
 (provide 'init-elpa)

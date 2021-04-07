@@ -31,7 +31,7 @@
       dashboard-items '((recents . 8)
 			(projects . 8)
 			(bookmarks . 5)
-			;; (agenda . 5)
+			(agenda . 5)
 			;; (registers . 5)
 			))
 ;; 图标显示 all-the-icons

@@ -35,7 +35,10 @@
    '("f f" . counsel-find-file)
    '("f r" . counsel-recentf)
    '("f t" . treemacs)
-   ;; SPC j/k will run the original command in MOTION state.
+   ;; org-capture和agenda相关
+   '("o c" . org-capture)
+   '("o a" . org-agenda)
+;; SPC j/k will run the original command in MOTION state.
    '("j" . meow-motion-origin-command)
    '("k" . meow-motion-origin-command)
    ;; Use SPC (0-9) for digit arguments.
@@ -72,6 +75,7 @@
    '("B" . meow-back-symbol)
    ;; '("c" . meow-change)
    ;; '("C" . meow-change-save)
+   '("d" . meow-delete)
    '("x" . meow-delete)
    '("v" . meow-line)
    '("f" . meow-find)
