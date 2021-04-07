@@ -3,6 +3,7 @@
 ;; set package mirrors
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(defvar my/package-contents-refreshed nil)
 ;;; My Use-package
 (defun my/use-package (pkg)
   (if (stringp pkg)
@@ -11,7 +12,12 @@
 	(require (intern pkg)))
       (progn
 	(unless (package-installed-p pkg)
+	  (unless my/package-contents-refreshed
+	    (package-refresh-contents)
+	    (setq my/package-contents-refreshed t))
 	  (package-install pkg))
 	(add-to-list 'package-selected-packages pkg))))
+(defmacro my/use-packagem (pkg)
+  (list 'my/use-package (list 'quote pkg)))
 
 (provide 'init-elpa)

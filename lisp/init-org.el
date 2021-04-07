@@ -1,6 +1,7 @@
 (my/use-package 'org-bullets)
 (my/use-package 'org-roam)
 (my/use-package 'org-roam-server)
+(my/use-package 'ob-go)
 
 ;; org-bullets
 (add-hook 'org-mode-hook '(lambda () (progn (org-bullets-mode t) (prettify-symbols-mode t))))
@@ -46,6 +47,28 @@
 ;; 默认不折叠标题
 (setq org-bullets-bullet-list '("☰" "☷" "☯" "☭")
       org-startup-folded nil)
+;; GTD (org-capture and org-agenda) config
+(defvar my/org-agenda-dir (locate-user-emacs-file "gtd") "gtd org files location")
+(unless (file-exists-p my/org-agenda-dir)
+  (make-directory my/org-agenda-dir))
+(setq org-agenda-files '())
+(add-to-list 'org-agenda-files my/org-agenda-dir)
+;; my/org-agenda-dir files
+(setq org-agenda-file-note (expand-file-name "notes.org" my/org-agenda-dir))
+(setq org-agenda-file-insp (expand-file-name "insps.org" my/org-agenda-dir))
+(setq org-agenda-file-task (expand-file-name "tasks.org" my/org-agenda-dir))
+(setq org-capture-templates
+      '(("t" "Task")
+        ("tw" "Work Task" entry (file+headline org-agenda-file-task "Work")
+         "* TODO %T - %^{Work Mainly Content} %^g\n  %?" :clock-in t :clock-keep t)
+        ("ts" "Study Task" entry (file+headline org-agenda-file-task "Study")
+         "* STUDY %T - %^{Study Mainly Content} %^g\n  %?" :clock-in t :clock-keep t)
+        ("i" "inspiration" entry (file+headline org-agenda-file-insp "Inspiration")
+         "* %^{Inspiration Mainly Content} \n  %?")
+        ("n" "Note" entry (file+headline org-agenda-file-note "Note")
+         "* %^{Note Mainly Content} \n  %?")))
+(define-key global-map (kbd (concat my/leader-key " o c")) 'org-capture)
+(define-key global-map (kbd (concat my/leader-key " o a")) 'org-agenda)
 ;; org-roam
 (add-hook 'after-init-hook 'org-roam-mode)
 (setq org-roam-directory my/roam-dir
@@ -82,7 +105,9 @@
  '((emacs-lisp . t)
    (shell . t)
    (python . t)
+   (go . t)
    (js . t)
+   (css . t)
    (latex . t)
    ))
 ;; 解决org-babel执行js代码错误的问题
