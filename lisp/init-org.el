@@ -1,7 +1,7 @@
-(my/use-package 'org-bullets)
-(my/use-package 'org-roam)
-(my/use-package 'org-roam-server)
-(my/use-package 'ob-go)
+(+use-package org-bullets)
+(+use-package org-roam)
+(+use-package org-roam-server)
+(+use-package ob-go)
 
 ;; org-bullets
 (add-hook 'org-mode-hook '(lambda () (progn (org-bullets-mode t) (prettify-symbols-mode t))))
@@ -48,40 +48,40 @@
 (setq org-bullets-bullet-list '("☰" "☷" "☯" "☭")
       org-startup-folded nil)
 ;; GTD (org-capture and org-agenda) config
-(defvar my/org-agenda-dir (locate-user-emacs-file "gtd") "gtd org files location")
-(unless (file-exists-p my/org-agenda-dir)
-  (make-directory my/org-agenda-dir))
+(defvar +org-agenda-dir (locate-user-emacs-file "gtd") "gtd org files location")
+(unless (file-exists-p +org-agenda-dir)
+  (make-directory +org-agenda-dir))
 (setq org-agenda-files '())
-(add-to-list 'org-agenda-files my/org-agenda-dir)
-;; my/org-agenda-dir files
-(setq org-agenda-file-note (expand-file-name "notes.org" my/org-agenda-dir))
-(setq org-agenda-file-insp (expand-file-name "insps.org" my/org-agenda-dir))
-(setq org-agenda-file-task (expand-file-name "tasks.org" my/org-agenda-dir))
+(add-to-list 'org-agenda-files +org-agenda-dir)
+;; +org-agenda-dir files
+(setq org-agenda-file-note (expand-file-name "notes.org" +org-agenda-dir))
+(setq org-agenda-file-insp (expand-file-name "insps.org" +org-agenda-dir))
+(setq org-agenda-file-task (expand-file-name "tasks.org" +org-agenda-dir))
 (setq org-capture-templates
       '(("t" "Task")
         ("tw" "Work Task" entry (file+headline org-agenda-file-task "Work")
-         "* TODO %T - %^{Work Mainly Content} %^g\n  %?" :clock-in t :clock-keep t)
+         "* TODO %T - %^{Work Mainly Content} %^g\n  %?")
         ("ts" "Study Task" entry (file+headline org-agenda-file-task "Study")
-         "* STUDY %T - %^{Study Mainly Content} %^g\n  %?" :clock-in t :clock-keep t)
+         "* STUDY %T - %^{Study Mainly Content} %^g\n  %?")
         ("i" "inspiration" entry (file+headline org-agenda-file-insp "Inspiration")
          "* %^{Inspiration Mainly Content} \n  %?")
         ("n" "Note" entry (file+headline org-agenda-file-note "Note")
          "* %^{Note Mainly Content} \n  %?")))
-(define-key global-map (kbd (concat my/leader-key " o c")) 'org-capture)
-(define-key global-map (kbd (concat my/leader-key " o a")) 'org-agenda)
+(+leader-set-key " o c" 'org-capture)
+(+leader-set-key " o a" 'org-agenda)
 ;; org-roam
 (add-hook 'after-init-hook 'org-roam-mode)
-(setq org-roam-directory my/roam-dir
+(setq org-roam-directory +roam-dir
       org-roam-capture-templates
       '(("d" "default" plain (function org-roam-capture--get-point)
          "%?"
          :file-name "${slug}"
          :head "#+title: ${title}\n#+date: %T\n")))
-(define-key global-map (kbd "C-; n l") 'org-roam)
-(define-key global-map (kbd "C-; n f") 'org-roam-find-file)
-(define-key global-map (kbd "C-; n g") 'org-roam-graph)
-(define-key global-map (kbd "C-; n i") 'org-roam-insert)
-(define-key global-map (kbd "C-; n I") 'org-roam-insert-immediate)
+(+global-set-key "C-; n l" 'org-roam)
+(+global-set-key "C-; n f" 'org-roam-find-file)
+(+global-set-key "C-; n g" 'org-roam-graph)
+(+global-set-key "C-; n i" 'org-roam-insert)
+(+global-set-key "C-; n I" 'org-roam-insert-immediate)
 ;; org-roam-server
 (setq org-roam-server-host "127.0.0.1"
       org-roam-server-port 8088

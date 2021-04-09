@@ -1,15 +1,45 @@
-(my/use-package 'smooth-scrolling)
-(my/use-package 'popwin)
-(my/use-package 'nyan-mode)
-(my/use-package 'dashboard)
-(my/use-package 'all-the-icons)
-(my/use-package 'all-the-icons-ivy)
-(my/use-package 'all-the-icons-ivy-rich)
-(my/use-package 'all-the-icons-dired)
-(my/use-package 'doom-themes)
-(my/use-package 'doom-modeline)
-(my/use-package "ligature")
+(+use-package smooth-scrolling)
+(+use-package popwin)
+(+use-package nyan-mode)
+(+use-package dashboard)
+(+use-package all-the-icons)
+(+use-package all-the-icons-ivy)
+(+use-package all-the-icons-ivy-rich)
+(+use-package all-the-icons-dired)
+(+use-package doom-themes)
+(+use-package doom-modeline)
+(+use-package "ligature")
 
+;; 中文与外文字体设置函数
+(defun +set-font (english chinese english-size chinese-size)
+  "分别设置英文和中文字体达到中英文等宽"
+  (when (display-graphic-p)
+    (set-face-attribute 'default nil :font
+			(format   "%s:pixelsize=%d"  english english-size))
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset
+			(font-spec :family chinese :size chinese-size)))))
+
+(if +font-cn-en
+    (+set-font (car +font-cn-en)(cadr +font-cn-en)(caddr +font-cn-en)(cadddr +font-cn-en)))
+;; 启动时全屏(根据用户设置的变量+maximized决定是否全屏)
+(if +maximized
+    (setq initial-frame-alist '((fullscreen . maximized))))
+;; 隐藏菜单栏工具栏滚动条
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+;; 开启鼠标和滚轮
+(xterm-mouse-mode t)
+(mouse-wheel-mode t)
+;; 当前行高亮
+(global-hl-line-mode t)
+;; 状态栏显示列号
+(column-number-mode t)
+;; 关闭启动界面
+(setq inhibit-splash-screen t)
+;; 去掉scratch默认显示的文字
+(setq initial-scratch-message "")
 ;; 启用文件历史记录
 (recentf-mode t)
 ;; 开启行号
@@ -48,8 +78,8 @@
 					      (all-the-icons-ivy-rich-mode t))))
 ;; dired文件浏览器使用all-the-icons
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-;; 可在custom.el里设置my/theme变量作为主题
-(load-theme my/theme t)
+;; 可在custom.el里设置+theme变量作为主题
+(load-theme +theme t)
 ;; doom-modeline
 (add-hook 'after-init-hook 'doom-modeline-mode)
 (setq doom-modeline-height 5
@@ -59,7 +89,7 @@
       doom-modeline-env-enable-go nil)
 ;; 连字显示ligature.el
 ;; 需要设置英文字体为连字字体，如：
-;; (my/set-font   "FiraCode Nerd Font Mono" "WenQuanYi Micro Hei" 13 16)
+;; (+set-font   "FiraCode Nerd Font Mono" "WenQuanYi Micro Hei" 13 16)
 ;; Enable the "www" ligature in every possible major mode
 (global-ligature-mode t)
 (ligature-set-ligatures 't '("www"))

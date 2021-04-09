@@ -1,45 +1,82 @@
-(my/use-package 'rainbow-delimiters)
-(my/use-package 'indent-guide)
-(my/use-package 'editorconfig)
-(my/use-package 'editorconfig-generate)
-(my/use-package 'ivy)
-(my/use-package 'ivy-rich)
-(my/use-package 'counsel)
-(my/use-package 'counsel-projectile)
-(my/use-package 'swiper)
-(my/use-package 'ivy-posframe)
-(my/use-package 'projectile)
-(my/use-package 'multi-term)
-(my/use-package 'git-gutter)
-(my/use-package 'magit)
-(my/use-package 'company)
-(my/use-package 'company-box)
-(my/use-package 'yasnippet)
-(my/use-package 'yasnippet-snippets)
-(my/use-package 'flycheck)
-(my/use-package 'yaml-mode)
-(my/use-package 'markdown-mode)
-(my/use-package 'csharp-mode)
-(my/use-package 'go-mode)
-(my/use-package 'python-mode)
-(my/use-package 'lua-mode)
-(my/use-package 'dart-mode)
-(my/use-package 'lsp-dart)
-(my/use-package 'web-mode)
-(my/use-package 'emmet-mode)
-(my/use-package 'typescript-mode)
-(my/use-package 'json-mode)
-(my/use-package 'rjsx-mode)
-(my/use-package 'mmm-mode)
-(my/use-package 'vue-mode)
+(+use-package rainbow-delimiters)
+(+use-package indent-guide)
+(+use-package editorconfig)
+(+use-package editorconfig-generate)
+(+use-package ivy)
+(+use-package ivy-rich)
+(+use-package counsel)
+(+use-package counsel-projectile)
+(+use-package swiper)
+(+use-package ivy-posframe)
+(+use-package projectile)
+(+use-package multi-term)
+(+use-package git-gutter)
+(+use-package magit)
+(+use-package company)
+(+use-package company-box)
+(+use-package yasnippet)
+(+use-package yasnippet-snippets)
+(+use-package flycheck)
+(+use-package yaml-mode)
+(+use-package markdown-mode)
+(+use-package csharp-mode)
+(+use-package go-mode)
+(+use-package python-mode)
+(+use-package lua-mode)
+(+use-package dart-mode)
+(+use-package lsp-dart)
+(+use-package web-mode)
+(+use-package emmet-mode)
+(+use-package typescript-mode)
+(+use-package json-mode)
+(+use-package rjsx-mode)
+(+use-package mmm-mode)
+(+use-package vue-mode)
 
+;; 开关内置终端命令
+(defun +multi-term-dedicated-toggle-select ()
+  "开关内置终端"
+  (interactive)
+  (multi-term-dedicated-toggle)
+  (when (multi-term-dedicated-exist-p)
+    (multi-term-dedicated-select)))
+
+;; 折叠代码
+(+global-set-key "C-'" 'hs-toggle-hiding)
+;; 注释代码
+(+global-set-key "M-/" 'comment-or-uncomment-region)
 ;; 彩虹括号 rainbow-delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;; 显示缩进 indent-guide
 (add-hook 'after-init-hook 'indent-guide-global-mode)
 ;; editorconfig
 (add-hook 'after-init-hook 'editorconfig-mode)
-(define-key global-map (kbd "M-y") 'counsel-yank-pop)
+(+global-set-key "M-y" 'counsel-yank-pop)
+;; buffer
+(+leader-set-key "b b" 'counsel-switch-buffer "切换缓冲区")
+(+leader-set-key "b d" 'kill-buffer "关闭缓冲区")
+(+leader-set-key "b n" 'switch-to-next-buffer "下一个缓冲区")
+(+leader-set-key "b p" 'switch-to-prev-buffer "上一个缓冲区")
+;; file
+(+leader-set-key "f f" 'counsel-find-file "打开文件")
+(+leader-set-key "f r" 'counsel-recentf "文件历史记录")
+(+leader-set-key "f s" 'save-buffer "保存文件")
+(+leader-set-key "f t" 'treemacs "开启/关闭文件目录")
+;; projectile
+(+leader-set-key "p p" 'projectile-command-map "更多命令")
+(+leader-set-key "p f" 'counsel-projectile-find-file "打开项目文件")
+(+leader-set-key "p b" 'counsel-projectile-switch-to-buffer "切换项目buffer")
+(+leader-set-key "p s" 'counsel-projectile-rg "在项目中搜索")
+;; swiper
+(+global-set-key "C-s" 'swiper)
+;; counsel-M-x
+(+global-set-key "M-x" 'counsel-M-x)
+(+global-set-key "C-h C-f" 'counsel-describe-function "查看函数")
+(+global-set-key "C-h C-v" 'counsel-describe-variable "查看变量")
+(+global-set-key "C-x C-n" 'display-line-numbers-mode "开启/关闭行号")
+(+global-set-key "C-x C-f" 'counsel-find-file "打开文件")
+(+global-set-key "C-x b" 'counsel-switch-buffer "切换buffer")
+(+global-set-key "C-x C-r" 'counsel-recentf "文件历史记录")
 ;; ivy-posframe浮动提示
 (add-hook 'after-init-hook 'ivy-posframe-mode)
 ;; 设置浮动提示在中心显示
@@ -52,7 +89,7 @@
 ;; projectile查找文件使用ivy
 (setq projectile-completion-system 'ivy)
 ;; emacs内置终端 multi-term
-(define-key global-map (kbd "C-~") 'my/multi-term-dedicated-toggle-select)
+(+global-set-key "C-~" '+multi-term-dedicated-toggle-select)
 ;; 显示git文件变化（git-gutter）
 (add-hook 'after-init-hook 'global-git-gutter-mode)
 ;; 自动补全 company
@@ -69,14 +106,16 @@
 (add-hook 'company-mode-hook 'company-box-mode)
 ;; 代码片段 yasnippet
 (add-hook 'after-init-hook 'yas-global-mode)
+(+leader-set-key "s" 'company-yasnippet "代码片段")
+
 (with-eval-after-load "csharp-mode"
   (unbind-key (kbd ",") csharp-mode-map))
 ;; dart flutter sdk dir设置
-(defvar my/flutter-sdk-dir nil)
-(if (not my/flutter-sdk-dir)
-    (setq my/flutter-sdk-dir (getenv "FLUTTER_HOME")))
+(defvar +flutter-sdk-dir nil)
+(if (not +flutter-sdk-dir)
+    (setq +flutter-sdk-dir (getenv "FLUTTER_HOME")))
 (custom-set-variables
- '(lsp-dart-flutter-sdk-dir my/flutter-sdk-dir))
+ '(lsp-dart-flutter-sdk-dir +flutter-sdk-dir))
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (setq-default web-mode-markup-indent-offset 2
@@ -88,14 +127,14 @@
 	      web-mode-enable-auto-pairing t
 	      web-mode-enable-css-colorization t)
 ;; emmet-mode
-(defun my/emmet-enable ()
+(defun +emmet-enable ()
   (emmet-mode t))
-(add-hook 'web-mode 'my/emmet-enable)
-(add-hook 'vue-mode 'my/emmet-enable)
-(add-hook 'css-mode 'my/emmet-enable)
-(add-hook 'js-mode 'my/emmet-enable)
-(add-hook 'js2-mode 'my/emmet-enable)
-(add-hook 'rjsx-mode-hook 'my/emmet-enable)
+(add-hook 'web-mode '+emmet-enable)
+(add-hook 'vue-mode '+emmet-enable)
+(add-hook 'css-mode '+emmet-enable)
+(add-hook 'js-mode '+emmet-enable)
+(add-hook 'js2-mode '+emmet-enable)
+(add-hook 'rjsx-mode-hook '+emmet-enable)
 (setq emmet-self-closing-tag-style " /")
 ;; javascript/typescript/json
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))

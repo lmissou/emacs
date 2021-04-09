@@ -1,23 +1,13 @@
-(my/use-package 'lsp-mode)
-(my/use-package 'lsp-java)
-(my/use-package 'lsp-ivy)
-(my/use-package 'lsp-ui)
-(my/use-package 'dap-mode)
+(+use-package lsp-mode)
+(+use-package lsp-java)
+(+use-package lsp-ivy)
+(+use-package lsp-ui)
+(+use-package dap-mode)
 
 ;; lsp
 (setq lsp-keymap-prefix "C-; l")
-;; (let (progs '(js-mode js2-mode json-mode rjsx-mode typescript-mode
-;;  		      css-mode html-mode web-mode vue-mode
-;;  		      c-mode c++-mode csharp-mode
-;;  		      go-mode
-;;  		      lua-mode
-;;  		      python-mode
-;;  		      dart-mode
-;;  		      java-mode
-;;  		      yaml-mode
-;;  		      )
-;; 	    (loop for prog in 'progs do
-;;  		  (message "a")))
+(+leader-set-key "a d" 'lsp-find-definition "跳转到定义")
+(+leader-set-key "a r" 'lsp-find-references "跳转到使用")
 (add-hook 'js-mode-hook 'lsp)
 (add-hook 'js2-mode-hook 'lsp)
 (add-hook 'json-mode-hook 'lsp)
