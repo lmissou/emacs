@@ -5,7 +5,7 @@
 (+use-package dap-mode)
 
 ;; lsp
-(setq lsp-keymap-prefix "C-; l")
+(setq lsp-keymap-prefix (concat +leader-key " l"))
 (+leader-set-key "a d" 'lsp-find-definition "跳转到定义")
 (+leader-set-key "a r" 'lsp-find-references "跳转到使用")
 (add-hook 'js-mode-hook 'lsp)

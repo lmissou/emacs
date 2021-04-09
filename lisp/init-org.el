@@ -77,11 +77,11 @@
          "%?"
          :file-name "${slug}"
          :head "#+title: ${title}\n#+date: %T\n")))
-(+global-set-key "C-; n l" 'org-roam)
-(+global-set-key "C-; n f" 'org-roam-find-file)
-(+global-set-key "C-; n g" 'org-roam-graph)
-(+global-set-key "C-; n i" 'org-roam-insert)
-(+global-set-key "C-; n I" 'org-roam-insert-immediate)
+(+leader-set-key "n l" 'org-roam)
+(+leader-set-key "n f" 'org-roam-find-file)
+(+leader-set-key "n g" 'org-roam-graph)
+(+leader-set-key "n i" 'org-roam-insert)
+(+leader-set-key "n I" 'org-roam-insert-immediate)
 ;; org-roam-server
 (setq org-roam-server-host "127.0.0.1"
       org-roam-server-port 8088
