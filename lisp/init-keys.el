@@ -1,9 +1,15 @@
 (+use-package which-key)
 
+(defvar +already-init nil)
+
 (setq +key-bind-list '())
 
 (defun +set-key (map key cmd &optional wk)
-  (add-to-list '+key-bind-list (list map key cmd wk)))
+  (if +already-init
+      (define-key map (kbd key) cmd)
+    (if wk
+	(which-key-add-keymap-based-replacements map key wk))
+    (add-to-list '+key-bind-list (list map key cmd wk))))
 
 (defun +global-set-key (key cmd &optional wk)
   (+set-key global-map key cmd wk))
@@ -16,6 +22,7 @@
   (+set-key meow-leader-keymap key cmd wk))
 
 (defun +define-key ()
+  (setq +already-init t)
   (dolist (key-bind +key-bind-list)
     (progn
       (let ((map (car key-bind))
