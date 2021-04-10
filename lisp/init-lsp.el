@@ -26,6 +26,7 @@
 (add-hook 'dart-mode-hook 'lsp)
 (add-hook 'java-mode-hook 'lsp)
 (add-hook 'yaml-mode-hook 'lsp)
+(add-hook 'clojure-mode-hook 'lsp)
 ;; 启用lsp-mode的which-key提示
 (add-hook 'lsp-mdoe 'lsp-enable-which-key-integration)
 ;; 设置异步获取提示

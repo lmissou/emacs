@@ -10,36 +10,7 @@
    '("j" . meow-next)
    '("k" . meow-prev))
   (meow-leader-define-key
-   ;; 光标跳转快捷键
-   '("a g" . avy-goto-line)
-   '("a w" . avy-goto-word-0)
-   '("a s" . avy-goto-char-timer)
-   '("a d" . lsp-find-definition)
-   '("a r" . lsp-find-implementation)
-   ;; buffer相关快捷键
-   ;;'("b b" . counsel-switch-buffer)
-   ;;'("b d" . kill-buffer)
-   ;;'("b n" . switch-to-next-buffer)
-   ;;'("b p" . switch-to-prev-buffer)
-   ;; 项目相关快捷键
-   '("p p" . projectile-command-map)
-   '("p s" . counsel-projectile-rg)
-   '("p f" . counsel-projectile-find-file)
-   '("p b" . counsel-projectile-switch-to-buffer)
-   ;; 窗口相关快捷键
-   '("w w" . ace-window)
-   '("w q" . delete-window)
-   '("w o" . delete-other-windows)
-   '("w h" . split-window-horizontally)
-   '("w v" . split-window-vertically)
-   ;; 文件相关快捷键
-   '("f f" . counsel-find-file)
-   '("f r" . counsel-recentf)
-   '("f t" . treemacs)
-   ;; org-capture和agenda相关
-   '("o c" . org-capture)
-   '("o a" . org-agenda)
-;; SPC j/k will run the original command in MOTION state.
+   ;; SPC j/k will run the original command in MOTION state.
    '("j" . meow-motion-origin-command)
    '("k" . meow-motion-origin-command)
    ;; Use SPC (0-9) for digit arguments.

@@ -32,6 +32,7 @@
 (+use-package rjsx-mode)
 (+use-package mmm-mode)
 (+use-package vue-mode)
+(+use-package clojure-mode)
 
 ;; 开关内置终端命令
 (defun +multi-term-dedicated-toggle-select ()
@@ -79,11 +80,6 @@
 (+global-set-key "C-x C-r" 'counsel-recentf "文件历史记录")
 ;; ivy-posframe浮动提示
 (add-hook 'after-init-hook 'ivy-posframe-mode)
-;; 设置浮动提示在中心显示
-(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))
-      ivy-posframe-parameters
-      '((left-fringe . 8)
-	(right-fringe . 8)))
 ;; 项目管理 projcecilt
 (add-hook 'after-init-hook 'projectile-mode)
 ;; projectile查找文件使用ivy
