@@ -70,7 +70,14 @@
 (+leader-set-key " o c" 'org-capture)
 (+leader-set-key " o a" 'org-agenda)
 ;; org-roam
-(add-hook 'after-init-hook 'org-roam-mode)
+(defun +org-roam-start ()
+  (interactive)
+  (org-roam-mode t))
+(add-hook 'org-roam-mode-hook '(lambda ()
+				 (org-roam-server-mode t)
+				 (server-start)
+				 (require 'org-roam-protocol)))
+(+leader-set-key "o n" '+org-roam-start "开启org-roam")
 (setq org-roam-directory +roam-dir
       org-roam-capture-templates
       '(("d" "default" plain (function org-roam-capture--get-point)
@@ -94,9 +101,6 @@
       org-roam-server-network-label-truncate t
       org-roam-server-network-label-truncate-length 60
       org-roam-server-network-label-wrap-length 20)
-(server-start)
-(org-roam-server-mode t)
-(require 'org-roam-protocol)
 ;; org-mode图片固定大小设置
 (setq org-image-actual-width (/ (display-pixel-width) 3))
 ;; org-babel配置
