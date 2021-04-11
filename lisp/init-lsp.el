@@ -8,25 +8,27 @@
 (setq lsp-keymap-prefix (concat +leader-key " l"))
 (+leader-set-key "a d" 'lsp-find-definition "跳转到定义")
 (+leader-set-key "a r" 'lsp-find-references "跳转到使用")
-(add-hook 'js-mode-hook 'lsp)
-(add-hook 'js2-mode-hook 'lsp)
-(add-hook 'json-mode-hook 'lsp)
-(add-hook 'rjsx-mode-hook 'lsp)
-(add-hook 'typescript-mode-hook 'lsp)
-(add-hook 'css-mode-hook 'lsp)
-(add-hook 'html-mode-hook 'lsp)
-(add-hook 'web-mode-hook 'lsp)
-(add-hook 'vue-mode-hook 'lsp)
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
-(add-hook 'csharp-mode-hook 'lsp)
-(add-hook 'go-mode-hook 'lsp)
-(add-hook 'lua-mode-hook 'lsp)
-(add-hook 'python-mode-hook 'lsp)
-(add-hook 'dart-mode-hook 'lsp)
-(add-hook 'java-mode-hook 'lsp)
-(add-hook 'yaml-mode-hook 'lsp)
-(add-hook 'clojure-mode-hook 'lsp)
+(dolist (hook (list
+	       'js-mode-hook
+	       'js2-mode-hook
+	       'json-mode-hook
+	       'rjsx-mode-hook
+	       'typescript-mode-hook
+	       'css-mode-hook
+	       'html-mode-hook
+	       'web-mode-hook
+	       'vue-mode-hook
+	       'c-mode-hook
+	       'c++-mode-hook
+	       'csharp-mode-hook
+	       'go-mode-hook
+	       'lua-mode-hook
+	       'python-mode-hook
+	       'dart-mode-hook
+	       'java-mode-hook
+	       'yaml-mode-hook
+	       'clojure-mode-hook))
+  (add-hook hook 'lsp))
 ;; 启用lsp-mode的which-key提示
 (add-hook 'lsp-mdoe 'lsp-enable-which-key-integration)
 ;; 设置异步获取提示
