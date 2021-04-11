@@ -2,3 +2,6 @@
 	path = site-lisp/ligature
 	url = https://github.com/mickeynp/ligature.el.git
 
+[submodule "site-lisp/vue-mode"]
+	path = site-lisp/vue-mode
+	url = https://github.com/lmissou/vue-mode.git

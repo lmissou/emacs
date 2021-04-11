@@ -28,3 +28,4 @@ org-roam.db
 tramp
 /.extension/
 /server/
+/workspace/

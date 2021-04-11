@@ -30,8 +30,13 @@
 (+use-package typescript-mode)
 (+use-package json-mode)
 (+use-package rjsx-mode)
+;; vue-mode及其依赖
+(+use-package "vue-mode")
+(+use-package ssass-mode)
+(+use-package vue-html-mode)
+(+use-package edit-indirect)
 (+use-package mmm-mode)
-(+use-package vue-mode)
+;; clojure
 (+use-package clojure-mode)
 
 ;; 开关内置终端命令
