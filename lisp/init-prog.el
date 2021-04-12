@@ -30,12 +30,18 @@
 (+use-package typescript-mode)
 (+use-package json-mode)
 (+use-package rjsx-mode)
+;; css-in-js支持
+(+use-package css-mode)
+(+use-package rx)
+(+use-package ov)
+(+use-package "fence-edit")
+(+use-package "styled")
 ;; vue-mode及其依赖
-(+use-package "vue-mode")
 (+use-package ssass-mode)
 (+use-package vue-html-mode)
 (+use-package edit-indirect)
 (+use-package mmm-mode)
+(+use-package "vue-mode")
 ;; clojure
 (+use-package clojure-mode)
 
@@ -142,6 +148,10 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
 (setq-default js2-mode-show-strict-warnings nil)
+;; css-in-js支持
+(setq styled-component-end (rx-to-string '(: "`" eol)))
+(setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
+(add-hook 'rjsx-mode-hook '(lambda () (+set-key rjsx-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
 ;; 优化mmm-mode支持editorconfig
 ;; 优化html/vue中的js和css的缩进
 (add-hook 'mmm-js-mode-submode-hook 'editorconfig-apply)
