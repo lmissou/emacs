@@ -27,7 +27,6 @@
 (+use-package lsp-dart)
 (+use-package web-mode)
 (+use-package emmet-mode)
-(+use-package typescript-mode)
 (+use-package json-mode)
 ;; css-in-js支持
 (+use-package css-mode)
@@ -140,12 +139,14 @@
 ;; 启用jsx
 (add-hook 'js-mode-hook 'js-jsx-enable)
 (setq emmet-self-closing-tag-style " /")
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+;; 自定义typescript-mode(实际上就是js-mode,只是显示名字为typescript)
+(define-derived-mode typescript-mode js-mode
+  "typescript")
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
 ;; css-in-js支持
 (setq styled-component-end (rx-to-string '(: "`")))
 (setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
 (add-hook 'js-mode-hook '(lambda () (+set-key js-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
-(add-hook 'typescript-mode-hook '(lambda () (+set-key typescript-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
 ;; 优化mmm-mode支持editorconfig
 ;; 优化html/vue中的js和css的缩进
 (add-hook 'mmm-js-mode-submode-hook 'editorconfig-apply)
