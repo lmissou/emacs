@@ -140,10 +140,12 @@
 ;; 启用jsx
 (add-hook 'js-mode-hook 'js-jsx-enable)
 (setq emmet-self-closing-tag-style " /")
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 ;; css-in-js支持
 (setq styled-component-end (rx-to-string '(: "`")))
 (setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
-(+set-key prog-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")
+(add-hook 'js-mode-hook '(lambda () (+set-key js-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
+(add-hook 'typescript-mode-hook '(lambda () (+set-key typescript-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
 ;; 优化mmm-mode支持editorconfig
 ;; 优化html/vue中的js和css的缩进
 (add-hook 'mmm-js-mode-submode-hook 'editorconfig-apply)
