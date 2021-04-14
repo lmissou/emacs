@@ -2,3 +2,13 @@
 	path = site-lisp/ligature
 	url = https://github.com/mickeynp/ligature.el.git
 
+[submodule "site-lisp/vue-mode"]
+	path = site-lisp/vue-mode
+	url = https://github.com/lmissou/vue-mode.git
+[submodule "site-lisp/styled"]
+	path = site-lisp/styled
+	url = https://github.com/LaloHao/emacs-styled-components
+
+[submodule "site-lisp/fence-edit"]
+	path = site-lisp/fence-edit
+	url = https://github.com/aaronbieber/fence-edit.el

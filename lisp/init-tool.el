@@ -48,7 +48,10 @@
   (require 'treemacs-all-the-icons)
   (treemacs-load-theme "all-the-icons"))
 ;; 有道词典
-(+global-set-key "C-c t" 'youdao-dictionary-search-async "有道词典")
+(setq youdao-dictionary-search-history-file (locate-user-emacs-file ".cache/youdao-history"))
+(+leader-set-key "t t" 'youdao-dictionary-search-at-point-posframe "有道词典")
+(+leader-set-key "t w" 'youdao-dictionary-search-async "有道词典")
+(+leader-set-key "t p" 'youdao-dictionary-play-voice-at-point "有道词典")
 (setq url-automatic-caching t)
 
 (provide 'init-tool)

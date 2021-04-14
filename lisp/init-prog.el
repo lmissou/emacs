@@ -27,11 +27,20 @@
 (+use-package lsp-dart)
 (+use-package web-mode)
 (+use-package emmet-mode)
-(+use-package typescript-mode)
 (+use-package json-mode)
-(+use-package rjsx-mode)
+;; css-in-js支持
+(+use-package css-mode)
+(+use-package rx)
+(+use-package ov)
+(+use-package "fence-edit")
+(+use-package "styled")
+;; vue-mode及其依赖
+(+use-package ssass-mode)
+(+use-package vue-html-mode)
+(+use-package edit-indirect)
 (+use-package mmm-mode)
-(+use-package vue-mode)
+(+use-package "vue-mode")
+;; clojure
 (+use-package clojure-mode)
 
 ;; 开关内置终端命令
@@ -123,24 +132,28 @@
 	      web-mode-enable-auto-pairing t
 	      web-mode-enable-css-colorization t)
 ;; emmet-mode
-(defun +emmet-enable ()
-  (emmet-mode t))
-(add-hook 'web-mode '+emmet-enable)
-(add-hook 'vue-mode '+emmet-enable)
-(add-hook 'css-mode '+emmet-enable)
-(add-hook 'js-mode '+emmet-enable)
-(add-hook 'js2-mode '+emmet-enable)
-(add-hook 'rjsx-mode-hook '+emmet-enable)
+(add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'vue-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook 'emmet-mode)
+(add-hook 'js-mode-hook 'emmet-mode)
+;; 启用jsx
+(add-hook 'js-mode-hook 'js-jsx-enable)
 (setq emmet-self-closing-tag-style " /")
-;; javascript/typescript/json
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
-(setq-default js2-mode-show-strict-warnings nil)
+;; 自定义typescript-mode(实际上就是js-mode,只是显示名字为typescript)
+(define-derived-mode typescript-mode js-mode
+  "typescript"
+  (defalias 'typescript-indent-level 'js-indent-level)
+  ;; typescript使用js-mode的缩进
+  (add-to-list 'editorconfig-indentation-alist '(typescript-mode js-indent-level)))
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
+;; css-in-js支持
+(setq styled-component-end (rx-to-string '(: "`")))
+(setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
+(add-hook 'js-mode-hook '(lambda () (+set-key js-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
 ;; 优化mmm-mode支持editorconfig
 ;; 优化html/vue中的js和css的缩进
 (add-hook 'mmm-js-mode-submode-hook 'editorconfig-apply)
-(add-hook 'mmm-css-mode-submode 'editorconfig-apply)
+(add-hook 'mmm-css-mode-submode-hook 'editorconfig-apply)
 ;; vue
 (setq-default mmm-submode-decoration-level 0 ;; 去掉mmm-mode背景色
 	      vue-html-extra-indent 2 ;; vue单文件组件template里的内容首行缩进
@@ -155,5 +168,17 @@
       '((?\" . ?\")
 	(?\{ . ?\})
 	(?\' . ?\')))
+(setq emacs-lisp--prettify-symbols-alist
+      '(("lambda" . ?λ)
+	("defun" . ?∫)))
+
+(defun +auto-prettify-symbols ()
+  "prettify-symbols-mode美化符号, 定义xx--prettify-symbols-alist即可"
+  (let ((prettify-alist (intern (concat (substring (symbol-name major-mode) 0 -5) "--prettify-symbols-alist"))))
+    (if (boundp prettify-alist)
+	(progn (setq prettify-symbols-alist (symbol-value prettify-alist))
+	       (prettify-symbols-mode t)))))
+(add-hook 'prog-mode-hook '+auto-prettify-symbols)
+(add-hook 'org-mode-hook '+auto-prettify-symbols)
 
 (provide 'init-prog)
