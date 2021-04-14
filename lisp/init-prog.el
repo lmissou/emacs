@@ -141,7 +141,10 @@
 (setq emmet-self-closing-tag-style " /")
 ;; 自定义typescript-mode(实际上就是js-mode,只是显示名字为typescript)
 (define-derived-mode typescript-mode js-mode
-  "typescript")
+  "typescript"
+  (defalias 'typescript-indent-level 'js-indent-level)
+  ;; typescript使用js-mode的缩进
+  (add-to-list 'editorconfig-indentation-alist '(typescript-mode js-indent-level)))
 (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
 ;; css-in-js支持
 (setq styled-component-end (rx-to-string '(: "`")))
