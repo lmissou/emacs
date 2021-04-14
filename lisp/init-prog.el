@@ -29,7 +29,6 @@
 (+use-package emmet-mode)
 (+use-package typescript-mode)
 (+use-package json-mode)
-(+use-package rjsx-mode)
 ;; css-in-js支持
 (+use-package css-mode)
 (+use-package rx)
@@ -134,28 +133,21 @@
 	      web-mode-enable-auto-pairing t
 	      web-mode-enable-css-colorization t)
 ;; emmet-mode
-(defun +emmet-enable ()
-  (emmet-mode t))
-(add-hook 'web-mode '+emmet-enable)
-(add-hook 'vue-mode '+emmet-enable)
-(add-hook 'css-mode '+emmet-enable)
-(add-hook 'js-mode '+emmet-enable)
-(add-hook 'js2-mode '+emmet-enable)
-(add-hook 'rjsx-mode-hook '+emmet-enable)
+(add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'vue-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook 'emmet-mode)
+(add-hook 'js-mode-hook 'emmet-mode)
+;; 启用jsx
+(add-hook 'js-mode-hook 'js-jsx-enable)
 (setq emmet-self-closing-tag-style " /")
-;; javascript/typescript/json
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
-(setq-default js2-mode-show-strict-warnings nil)
 ;; css-in-js支持
-(setq styled-component-end (rx-to-string '(: "`" eol)))
+(setq styled-component-end (rx-to-string '(: "`")))
 (setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
-(add-hook 'rjsx-mode-hook '(lambda () (+set-key rjsx-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
+(+set-key prog-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")
 ;; 优化mmm-mode支持editorconfig
 ;; 优化html/vue中的js和css的缩进
 (add-hook 'mmm-js-mode-submode-hook 'editorconfig-apply)
-(add-hook 'mmm-css-mode-submode 'editorconfig-apply)
+(add-hook 'mmm-css-mode-submode-hook 'editorconfig-apply)
 ;; vue
 (setq-default mmm-submode-decoration-level 0 ;; 去掉mmm-mode背景色
 	      vue-html-extra-indent 2 ;; vue单文件组件template里的内容首行缩进

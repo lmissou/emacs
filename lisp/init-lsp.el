@@ -10,9 +10,7 @@
 (+leader-set-key "a r" 'lsp-find-references "跳转到使用")
 (dolist (hook (list
 	       'js-mode-hook
-	       'js2-mode-hook
 	       'json-mode-hook
-	       'rjsx-mode-hook
 	       'typescript-mode-hook
 	       'css-mode-hook
 	       'html-mode-hook
@@ -30,12 +28,12 @@
 	       'clojure-mode-hook))
   (add-hook hook 'lsp))
 ;; 启用lsp-mode的which-key提示
-(add-hook 'lsp-mdoe 'lsp-enable-which-key-integration)
+(add-hook 'lsp-mdoe-hook 'lsp-enable-which-key-integration)
 ;; 设置异步获取提示
 (setq lsp--document-symbols-request-async t
       lsp-enable-snippet nil)
 ;; lsp-ui
-(add-hook 'lsp-mode 'lsp-ui-mode)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (setq lsp-ui-peek-enable t
       lsp-ui-doc-enable t
       lsp-ui-imenu-enable t
