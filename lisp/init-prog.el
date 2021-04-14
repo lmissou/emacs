@@ -168,13 +168,13 @@
       '((?\" . ?\")
 	(?\{ . ?\})
 	(?\' . ?\')))
-(setq emacs-lisp-mode-prettify-symbols-alist
+(setq emacs-lisp--prettify-symbols-alist
       '(("lambda" . ?λ)
 	("defun" . ?∫)))
 
 (defun +auto-prettify-symbols ()
-  "prettify-symbols-mode美化符号, 定义xx-mode-prettify-symbols-alist即可"
-  (let ((prettify-alist (intern (concat (symbol-name major-mode) "-prettify-symbols-alist"))))
+  "prettify-symbols-mode美化符号, 定义xx--prettify-symbols-alist即可"
+  (let ((prettify-alist (intern (concat (substring (symbol-name major-mode) 0 -5) "--prettify-symbols-alist"))))
     (if (boundp prettify-alist)
 	(progn (setq prettify-symbols-alist (symbol-value prettify-alist))
 	       (prettify-symbols-mode t)))))
