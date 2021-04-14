@@ -27,5 +27,7 @@
 ;; 优化转换大小写
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+;; dired只保留一个buffer
+(put 'dired-find-alternate-file 'disabled nil)
 
 (provide 'init-basic)
