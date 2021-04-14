@@ -112,7 +112,17 @@
 (meow-setup-indicator)
 ;; 使用jk退出插入模式
 (add-hook 'after-init-hook 'key-chord-mode)
+(defun +key-chord-define-sequenced (keymap keys command)
+  "Define Sequenced keys with key-chord"
+  (if (/= 2 (length keys))
+      (error "Key-chord keys must have two elements"))
+  ;; Exotic chars in a string are >255 but define-key wants 128..255
+  ;; for those.
+  (let ((key1 (logand 255 (aref keys 0)))
+        (key2 (logand 255 (aref keys 1))))
+    (define-key keymap (vector 'key-chord key1 key2) command)))
+
 (setq key-chord-two-keys-delay 0.3)
-(key-chord-define meow-insert-state-keymap "jk" 'meow-insert-exit)
+(+key-chord-define-sequenced meow-insert-state-keymap "jk" 'meow-insert-exit)
 
 (provide 'init-meow)
