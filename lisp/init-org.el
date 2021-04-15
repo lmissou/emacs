@@ -1,10 +1,8 @@
-(+use-package org-bullets)
+(+use-package org-superstar)
 (+use-package org-roam)
 (+use-package org-roam-server)
 (+use-package ob-go)
 
-;; org-bullets
-(add-hook 'org-mode-hook 'org-bullets-mode)
 (setq org--prettify-symbols-alist '(("[ ]" . ?)
 				    ("[X]" . ?)
 				    ("[-]" . ?)
@@ -44,8 +42,10 @@
 				    ("#+results:" . ?)
 				    ("#+tblfm:" . ?)
 				    ("#+caption:" . ?)))
-;; 默认不折叠标题
-(setq org-bullets-bullet-list '("☰" "☷" "☯" "☭")
+;; org-superstar
+(add-hook 'org-mode-hook 'org-superstar-mode)
+(setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭")
+      ;; 默认不折叠标题
       org-startup-folded nil)
 ;; GTD (org-capture and org-agenda) config
 (defvar +org-agenda-dir (locate-user-emacs-file "gtd") "gtd org files location")
