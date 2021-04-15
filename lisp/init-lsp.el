@@ -31,7 +31,8 @@
 (add-hook 'lsp-mdoe-hook 'lsp-enable-which-key-integration)
 ;; 设置异步获取提示
 (setq lsp--document-symbols-request-async t
-      lsp-enable-snippet nil)
+      lsp-enable-snippet nil
+      lsp-restart 'auto-restart)
 ;; lsp-ui
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (setq lsp-ui-peek-enable t
