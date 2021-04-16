@@ -23,7 +23,8 @@
    '("7" . meow-digit-argument)
    '("8" . meow-digit-argument)
    '("9" . meow-digit-argument)
-   '("0" . meow-digit-argument))
+   '("0" . meow-digit-argument)
+   '("a" . meow-keypad-start))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
@@ -60,9 +61,6 @@
    '("H" . meow-left-expand)
    '("i" . meow-insert)
    '("I" . meow-insert-at-begin)
-   ;; '("m" . meow-join)
-   ;; '("M" . delete-indentation)
-   '("s" . meow-change)
    '("t" . meow-till)
    '("T" . meow-till-expand)
    '("w" . meow-mark-word)
@@ -92,18 +90,20 @@
    '("%" . meow-query-replace-regexp)
    '("/" . meow-visit)
    '(":" . meow-goto-line)
-   '("<escape>" . meow-last-buffer)))
+   '("<escape>" . meow-last-buffer))
+  (define-key meow-normal-state-keymap (kbd "SPC g") nil))
 (meow-global-mode 1)
-(setq   meow-cursor-type-default '(hbar . 3)
-	meow-cursor-type-normal '(hbar . 3)
-	meow-cursor-type-motion '(hbar . 4)
-	meow-cursor-type-insert '(bar . 2)
-	meow-cursor-type-keypad 'hollow
-	meow-replace-state-name-list
-	'((normal . "Ꮚ•ꈊ•Ꮚ")
-	  (insert . "Ꮚ`ꈊ´Ꮚ")
-	  (keypad . "Ꮚ'ꈊ'Ꮚ")
-	  (motion . "Ꮚ-ꈊ-Ꮚ")))
+(setq meow--keypad-both-prefix ?a
+      meow-cursor-type-default '(hbar . 3)
+      meow-cursor-type-normal '(hbar . 3)
+      meow-cursor-type-motion '(hbar . 4)
+      meow-cursor-type-insert '(bar . 2)
+      meow-cursor-type-keypad 'hollow
+      meow-replace-state-name-list
+      '((normal . "Ꮚ•ꈊ•Ꮚ")
+	(insert . "Ꮚ`ꈊ´Ꮚ")
+	(keypad . "Ꮚ'ꈊ'Ꮚ")
+	(motion . "Ꮚ-ꈊ-Ꮚ")))
 ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
 (meow-setup)
 ;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）

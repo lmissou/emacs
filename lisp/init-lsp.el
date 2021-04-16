@@ -6,8 +6,8 @@
 
 ;; lsp
 (setq lsp-keymap-prefix (concat +leader-key " l"))
-(+leader-set-key "a d" 'lsp-find-definition "跳转到定义")
-(+leader-set-key "a r" 'lsp-find-references "跳转到使用")
+(+leader-set-key "g d" 'lsp-find-definition "跳转到定义")
+(+leader-set-key "g r" 'lsp-find-references "跳转到使用")
 (dolist (hook (list
 	       'js-mode-hook
 	       'json-mode-hook
