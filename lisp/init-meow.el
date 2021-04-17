@@ -107,12 +107,41 @@
 ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
 (meow-setup)
 ;; 移除meow-thing默认的window-thing
-(setq meow-char-thing-table (remove '(119 . window) meow-char-thing-table))
-(add-to-list 'meow-char-thing-table '(?w . word))
+(setq meow-char-thing-table (remove '(?w . window) meow-char-thing-table))
 ;; 自定义meow-thing
 (defun +meow--bound-of-word ()
   (bounds-of-thing-at-point 'word))
+(defun +meow--bound-of-doublequote ()
+  (meow--bounds-of-regexp "\""))
+(defun +meow--inner-of-doublequote ()
+  (-when-let ((beg . end) (+meow--bound-of-doublequote))
+    (cons (1+ beg) (1- end))))
+(defun +meow--bound-of-singlequote ()
+  (meow--bounds-of-regexp "\'"))
+(defun +meow--inner-of-singlequote ()
+  (-when-let ((beg . end) (+meow--bound-of-singlequote))
+    (cons (1+ beg) (1- end))))
+(defun +meow--bound-of-backquote ()
+  (meow--bounds-of-regexp "\`"))
+(defun +meow--inner-of-backquote ()
+  (-when-let ((beg . end) (+meow--bound-of-backquote))
+    (cons (1+ beg) (1- end))))
+
 (meow--thing-register 'word #'+meow--bound-of-word #'+meow--bound-of-word)
+(add-to-list 'meow-char-thing-table '(?w . word))
+(meow--thing-register 'doublequote #'+meow--inner-of-doublequote #'+meow--bound-of-doublequote)
+(add-to-list 'meow-char-thing-table '(?\" . doublequote))
+(meow--thing-register 'singlequote #'+meow--inner-of-singlequote #'+meow--bound-of-singlequote)
+(add-to-list 'meow-char-thing-table '(?\' . singlequote))
+(meow--thing-register 'backquote #'+meow--inner-of-backquote #'+meow--bound-of-backquote)
+(add-to-list 'meow-char-thing-table '(?\` . backquote))
+(meow--thing-register 'backquote #'+meow--inner-of-backquote #'+meow--bound-of-backquote)
+(add-to-list 'meow-char-thing-table '(?\` . backquote))
+
+(add-to-list 'meow-char-thing-table '(?\( . round))
+(add-to-list 'meow-char-thing-table '(?\[ . square))
+(add-to-list 'meow-char-thing-table '(?\{ . curly))
+
 ;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）
 (meow-setup-line-number)
 ;; 如果你需要自动的 mode-line 设置（如果需要自定义见下文对 `meow-indicator' 说明）
