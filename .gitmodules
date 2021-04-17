@@ -12,3 +12,6 @@
 [submodule "site-lisp/fence-edit"]
 	path = site-lisp/fence-edit
 	url = https://github.com/aaronbieber/fence-edit.el
+[submodule "site-lisp/eaf"]
+	path = site-lisp/eaf
+	url = https://github.com/manateelazycat/emacs-application-framework.git

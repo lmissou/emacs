@@ -3,8 +3,10 @@
 (+use-package hungry-delete)
 (+use-package ace-window)
 (+use-package expand-region)
+(+use-package wrap-region)
 (+use-package multiple-cursors)
 (+use-package avy)
+(+use-package ace-pinyin)
 (+use-package treemacs)
 (+use-package treemacs-all-the-icons)
 (+use-package treemacs-magit)
@@ -29,16 +31,21 @@
 ;; 快速选择
 (+global-set-key "C-=" 'er/expand-region)
 (+normal-set-key "<return>" 'er/expand-region "expand-region")
+;; 包裹选区
+(wrap-region-global-mode t)
 ;; 多光标
 (multiple-cursors-mode t)
 (+global-set-key "C-S-<mouse-1>" 'mc/add-cursor-on-click)
 (+global-set-key "C-M-p" 'mc/mmlte--up)
 (+global-set-key "C-M-n" 'mc/mmlte--down)
 ;; 快速跳转
+(ace-pinyin-global-mode t)
 (setq avy-timeout-seconds 0.3)
-(+leader-set-key "a w" 'avy-goto-word-0 "快速跳转单词")
-(+leader-set-key "a s" 'avy-goto-char-timer "快速跳转到字符（搜索）")
-(+leader-set-key "a g" 'avy-goto-line "快速跳转行")
+(+leader-set-key "g w" 'avy-goto-word-0 "快速跳转单词")
+(+leader-set-key "g s" 'avy-goto-char-2 "快速跳转到字符2")
+(+leader-set-key "g g" 'avy-goto-line "快速跳转行")
+(+leader-set-key "g c" 'avy-goto-char "快速跳转字符")
+(+normal-set-key "s" 'avy-goto-char-2)
 ;; treemacs文件目录树
 (with-eval-after-load "treemacs"
   (treemacs-resize-icons 14)

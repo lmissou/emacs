@@ -6,8 +6,8 @@
 
 ;; lsp
 (setq lsp-keymap-prefix (concat +leader-key " l"))
-(+leader-set-key "a d" 'lsp-find-definition "跳转到定义")
-(+leader-set-key "a r" 'lsp-find-references "跳转到使用")
+(+leader-set-key "g d" 'lsp-find-definition "跳转到定义")
+(+leader-set-key "g r" 'lsp-find-references "跳转到使用")
 (dolist (hook (list
 	       'js-mode-hook
 	       'json-mode-hook
@@ -31,7 +31,8 @@
 (add-hook 'lsp-mdoe-hook 'lsp-enable-which-key-integration)
 ;; 设置异步获取提示
 (setq lsp--document-symbols-request-async t
-      lsp-enable-snippet nil)
+      lsp-enable-snippet nil
+      lsp-restart 'auto-restart)
 ;; lsp-ui
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (setq lsp-ui-peek-enable t

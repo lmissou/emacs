@@ -20,7 +20,7 @@
       (set-fontset-font (frame-parameter nil 'font) charset
 			(font-spec :family chinese :size chinese-size)))))
 
-(if +font-cn-en
+(if (boundp '+font-cn-en)
     (+set-font (car +font-cn-en)(cadr +font-cn-en)(caddr +font-cn-en)(cadddr +font-cn-en)))
 ;; 启动时全屏(根据用户设置的变量+maximized决定是否全屏)
 (if +maximized
