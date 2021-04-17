@@ -3,7 +3,6 @@
 
 ;; meow快捷键配置
 (require 'meow)
-(+leader-set-key "b b" 'counsel-switch-buffer "切换buffer")
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
