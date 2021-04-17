@@ -3,6 +3,7 @@
 (+use-package hungry-delete)
 (+use-package ace-window)
 (+use-package expand-region)
+(+use-package wrap-region)
 (+use-package multiple-cursors)
 (+use-package avy)
 (+use-package ace-pinyin)
@@ -30,6 +31,8 @@
 ;; 快速选择
 (+global-set-key "C-=" 'er/expand-region)
 (+normal-set-key "<return>" 'er/expand-region "expand-region")
+;; 包裹选区
+(wrap-region-global-mode t)
 ;; 多光标
 (multiple-cursors-mode t)
 (+global-set-key "C-S-<mouse-1>" 'mc/add-cursor-on-click)
