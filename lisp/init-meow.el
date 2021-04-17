@@ -50,7 +50,8 @@
    '("C" . meow-change-save)
    '("d" . meow-delete)
    '("x" . meow-delete)
-   '("v" . meow-line)
+   '("v" . meow-right-expand)
+   '("V" . meow-line)
    '("f" . meow-find)
    '("F" . meow-find-expand)
    '("g g" . meow-begin-of-buffer)
@@ -106,6 +107,13 @@
 	(motion . "Ꮚ-ꈊ-Ꮚ")))
 ;; meow-setup 用于自定义按键绑定，可以直接使用下文中的示例
 (meow-setup)
+;; 移除meow-thing默认的window-thing
+(setq meow-char-thing-table (remove '(119 . window) meow-char-thing-table))
+(add-to-list 'meow-char-thing-table '(?w . word))
+;; 自定义meow-thing
+(defun +meow--bound-of-word ()
+  (bounds-of-thing-at-point 'word))
+(meow--thing-register 'word #'+meow--bound-of-word #'+meow--bound-of-word)
 ;; 如果你需要在 NORMAL 下使用相对行号（基于 display-line-numbers-mode）
 (meow-setup-line-number)
 ;; 如果你需要自动的 mode-line 设置（如果需要自定义见下文对 `meow-indicator' 说明）
