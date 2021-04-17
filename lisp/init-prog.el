@@ -167,7 +167,8 @@
 (setq electric-pair-pairs
       '((?\" . ?\")
 	(?\{ . ?\})
-	(?\' . ?\')))
+	(?\[ . ?\])
+	(?\( . ?\))))
 (setq emacs-lisp--prettify-symbols-alist
       '(("lambda" . ?λ)
 	("defun" . ?∫)))
