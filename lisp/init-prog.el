@@ -15,6 +15,7 @@
 (+use-package company)
 (+use-package company-box)
 (+use-package yasnippet)
+(+use-package ivy-yasnippet)
 (+use-package yasnippet-snippets)
 (+use-package flycheck)
 (+use-package yaml-mode)
@@ -111,7 +112,7 @@
 (add-hook 'company-mode-hook 'company-box-mode)
 ;; 代码片段 yasnippet
 (add-hook 'after-init-hook 'yas-global-mode)
-(+leader-set-key "s" 'company-yasnippet "代码片段")
+(+leader-set-key "s" 'ivy-yasnippet "代码片段")
 
 (with-eval-after-load "csharp-mode"
   (unbind-key (kbd ",") csharp-mode-map))
