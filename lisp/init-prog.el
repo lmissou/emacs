@@ -15,6 +15,7 @@
 (+use-package company)
 (+use-package company-box)
 (+use-package yasnippet)
+(+use-package ivy-yasnippet)
 (+use-package yasnippet-snippets)
 (+use-package flycheck)
 (+use-package yaml-mode)
@@ -25,6 +26,7 @@
 (+use-package lua-mode)
 (+use-package dart-mode)
 (+use-package lsp-dart)
+(+use-package typescript-mode)
 (+use-package web-mode)
 (+use-package emmet-mode)
 (+use-package json-mode)
@@ -111,7 +113,7 @@
 (add-hook 'company-mode-hook 'company-box-mode)
 ;; 代码片段 yasnippet
 (add-hook 'after-init-hook 'yas-global-mode)
-(+leader-set-key "s" 'company-yasnippet "代码片段")
+(+leader-set-key "s" 'ivy-yasnippet "代码片段")
 
 (with-eval-after-load "csharp-mode"
   (unbind-key (kbd ",") csharp-mode-map))
@@ -139,17 +141,22 @@
 ;; 启用jsx
 (add-hook 'js-mode-hook 'js-jsx-enable)
 (setq emmet-self-closing-tag-style " /")
-;; 自定义typescript-mode(实际上就是js-mode,只是显示名字为typescript)
-(define-derived-mode typescript-mode js-mode
-  "typescript"
-  (defalias 'typescript-indent-level 'js-indent-level)
-  ;; typescript使用js-mode的缩进
-  (add-to-list 'editorconfig-indentation-alist '(typescript-mode js-indent-level)))
-(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook '(lambda ()
+			    "tsx文件使用web-mode,major-mode显示typescript[jsx]"
+			    (when (equal "tsx" (file-name-extension (buffer-file-name)))
+			      (setq-local mode-name "typescript[jsx]"))))
 ;; css-in-js支持
 (setq styled-component-end (rx-to-string '(: "`")))
 (setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
-(add-hook 'js-mode-hook '(lambda () (+set-key js-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
+(defun +fence-edit-bind-key ()
+  (when (string-match "\\.[j|t]sx?\\'" (buffer-file-name))
+    ))
+(add-hook 'js-mode-hook '(lambda ()
+			   (+set-key js-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
+(add-hook 'web-mode-hook '(lambda ()
+			    (when (equal "tsx" (file-name-extension (buffer-file-name)))
+			      (+set-key web-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css"))))
 ;; 优化mmm-mode支持editorconfig
 ;; 优化html/vue中的js和css的缩进
 (add-hook 'mmm-js-mode-submode-hook 'editorconfig-apply)
