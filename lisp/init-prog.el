@@ -144,6 +144,8 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-hook 'web-mode-hook '(lambda ()
 			    "tsx文件使用web-mode,major-mode显示typescript[jsx]"
+			    (defun web-mode-token-css-indentation (pos)
+			      (web-mode-relayql-indentation pos))
 			    (when (equal "tsx" (file-name-extension (buffer-file-name)))
 			      (setq-local mode-name "typescript[jsx]"))))
 ;; css-in-js支持
