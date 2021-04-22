@@ -34,7 +34,8 @@
       lsp-enable-snippet nil
       lsp-restart 'ignore)
 ;; 设置lsp格式化时，web-mode缩进的变量
-(add-to-list 'lsp--formatting-indent-alist '(web-mode . web-mode-indent-style))
+(with-eval-after-load "lsp-mode"
+  (add-to-list 'lsp--formatting-indent-alist '(web-mode . web-mode-indent-style)))
 ;; lsp-ui
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (setq lsp-ui-peek-enable t
