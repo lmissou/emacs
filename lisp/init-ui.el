@@ -65,12 +65,14 @@
 			;; (registers . 5)
 			))
 ;; 图标显示 all-the-icons
-(set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'prepend)
-(set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'prepend)
-(set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'prepend)
-(set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'prepend)
-(set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'prepend)
-(set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'prepend)
+(defvar +set-icons nil)
+(when +set-icons
+  (set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'prepend)
+  (set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'prepend))
 ;; ivy使用all-the-icons
 (all-the-icons-ivy-setup)
 ;; ivy-rich使用all-the-icons

@@ -13,4 +13,5 @@
 (require 'init-tool)
 (require 'init-prog)
 (require 'init-lsp)
-(require 'init-eaf)
+(require 'init-input)
+;; (require 'init-eaf)
