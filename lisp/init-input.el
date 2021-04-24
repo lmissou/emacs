@@ -3,6 +3,7 @@
 
 (defvar +rime-user-data-dir "~/.config/rime")
 (setq default-input-method "rime"
+      rime-cursor " "
       rime-show-candidate 'posframe
       rime-user-data-dir +rime-user-data-dir
       rime-disable-predicates '(rime-predicate-ace-window-p
