@@ -116,7 +116,7 @@
 (+leader-set-key "s" 'ivy-yasnippet "代码片段")
 
 (with-eval-after-load "csharp-mode"
-  (unbind-key (kbd ",") csharp-mode-map))
+  (define-key csharp-mode-map (kbd ",") nil))
 ;; dart flutter sdk dir设置
 (defvar +flutter-sdk-dir nil)
 (if (not +flutter-sdk-dir)
