@@ -32,7 +32,10 @@
 ;; 设置异步获取提示
 (setq lsp--document-symbols-request-async t
       lsp-enable-snippet nil
-      lsp-restart 'auto-restart)
+      lsp-restart 'ignore)
+;; 设置lsp格式化时，web-mode缩进的变量
+(with-eval-after-load "lsp-mode"
+  (add-to-list 'lsp--formatting-indent-alist '(web-mode . web-mode-indent-style)))
 ;; lsp-ui
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (setq lsp-ui-peek-enable t

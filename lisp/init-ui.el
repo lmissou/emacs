@@ -65,8 +65,8 @@
 			;; (registers . 5)
 			))
 ;; 图标显示 all-the-icons
-(defvar +set-icon-fontset nil)
-(when +set-icon-fontset
+(defvar +set-icons nil)
+(when +set-icons
   (set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'prepend)
   (set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'prepend)
   (set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'prepend)

@@ -116,7 +116,7 @@
 (+leader-set-key "s" 'ivy-yasnippet "代码片段")
 
 (with-eval-after-load "csharp-mode"
-  (unbind-key (kbd ",") csharp-mode-map))
+  (define-key csharp-mode-map (kbd ",") nil))
 ;; dart flutter sdk dir设置
 (defvar +flutter-sdk-dir nil)
 (if (not +flutter-sdk-dir)
@@ -144,14 +144,13 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-hook 'web-mode-hook '(lambda ()
 			    "tsx文件使用web-mode,major-mode显示typescript[jsx]"
+			    (defun web-mode-token-css-indentation (pos)
+			      (web-mode-relayql-indentation pos))
 			    (when (equal "tsx" (file-name-extension (buffer-file-name)))
 			      (setq-local mode-name "typescript[jsx]"))))
 ;; css-in-js支持
 (setq styled-component-end (rx-to-string '(: "`")))
 (setq fence-edit-blocks `((,styled-component-start ,styled-component-end)))
-(defun +fence-edit-bind-key ()
-  (when (string-match "\\.[j|t]sx?\\'" (buffer-file-name))
-    ))
 (add-hook 'js-mode-hook '(lambda ()
 			   (+set-key js-mode-map "C-c '" 'fence-edit-code-at-point "编辑styled css")))
 (add-hook 'web-mode-hook '(lambda ()
