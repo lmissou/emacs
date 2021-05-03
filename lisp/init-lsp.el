@@ -25,6 +25,7 @@
 	       'dart-mode-hook
 	       'java-mode-hook
 	       'yaml-mode-hook
+	       'rust-mode-hook
 	       'clojure-mode-hook))
   (add-hook hook 'lsp))
 ;; 启用lsp-mode的which-key提示

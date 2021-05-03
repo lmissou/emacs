@@ -44,6 +44,8 @@
 (+use-package "vue-mode")
 ;; clojure
 (+use-package clojure-mode)
+;; rust
+(+use-package rust-mode)
 
 ;; 开关内置终端命令
 (defun +multi-term-dedicated-toggle-select ()
