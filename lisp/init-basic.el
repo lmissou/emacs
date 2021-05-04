@@ -13,7 +13,12 @@
 ;; 基础的配置
 ;; 禁止备份文件
 (setq make-backup-files nil)
-(setq auto-save-default nil)
+;; 设置自动保存
+(defvar +auto-save-dirs (locate-user-emacs-file ".cache/auto-save-files/"))
+(unless (file-exists-p +auto-save-dirs)
+  (mkdir +auto-save-dirs))
+(setq auto-save-default t
+      auto-save-file-name-transforms (list (list ".*" +auto-save-dirs t)))
 (setq recentf-max-menu-items 40)
 ;; 开启图表缓存
 (setq inhibit-compacting-font-caches t)
