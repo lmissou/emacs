@@ -1,3 +1,4 @@
+(+use-package valign)
 (+use-package org-superstar)
 (+use-package org-roam)
 (+use-package org-roam-server)
@@ -42,6 +43,8 @@
 				    ("#+results:" . ?)
 				    ("#+tblfm:" . ?)
 				    ("#+caption:" . ?)))
+;; valign 对齐表格
+(add-hook 'org-mode-hook 'valign-mode)
 ;; org-superstar
 (add-hook 'org-mode-hook 'org-superstar-mode)
 (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭")
