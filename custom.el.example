@@ -1,0 +1,11 @@
+(if (display-graphic-p)
+    (setq +theme 'doom-one)
+  (setq +theme 'doom-spacegrey))
+(set-frame-font "FiraCode Nerd Font")
+(setq +rime-user-data-dir "~/.local/share/fcitx5/rime")
+(setq +org-agenda-dir "/data/Document/gtd")
+(setq +roam-dir "/data/Document/orgNotes")
+
+(setq eaf-proxy-host "127.0.0.1")
+(setq eaf-proxy-port "7891")
+(setq eaf-proxy-type "socks")
