@@ -37,5 +37,8 @@
 ;; which-key快捷键提示
 (which-key-mode t)
 (which-key-setup-minibuffer)
+;; 上下滚动一行
+(+global-set-key "M-n" 'scroll-up-line)
+(+global-set-key "M-p" 'scroll-down-line)
 
 (provide 'init-keys)
