@@ -37,6 +37,8 @@
 ;; which-key快捷键提示
 (which-key-mode t)
 (which-key-setup-minibuffer)
+;; 开关菜单栏
+(+global-set-key "<f12>" 'menu-bar-mode)
 ;; 上下滚动一行
 (+global-set-key "M-n" 'scroll-up-line)
 (+global-set-key "M-p" 'scroll-down-line)
