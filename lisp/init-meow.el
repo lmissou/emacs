@@ -47,7 +47,6 @@
    '("B" . meow-back-symbol)
    '("c" . meow-change)
    '("C" . meow-change-save)
-   '("d" . meow-delete)
    '("x" . meow-delete)
    '("v" . meow-right-expand)
    '("V" . meow-line)
