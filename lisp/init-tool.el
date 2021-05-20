@@ -12,6 +12,7 @@
 (+use-package treemacs-magit)
 (+use-package treemacs-projectile)
 (+use-package youdao-dictionary)
+(+use-package drag-stuff)
 
 ;; 全局开启undo-tree优化重做撤销
 (global-undo-tree-mode t)
@@ -60,5 +61,8 @@
 (+leader-set-key "t w" 'youdao-dictionary-search-async "有道词典")
 (+leader-set-key "t p" 'youdao-dictionary-play-voice-at-point "有道词典")
 (setq url-automatic-caching t)
+;; 文本移动drag-stuff
+(drag-stuff-global-mode t)
+(drag-stuff-define-keys)
 
 (provide 'init-tool)
