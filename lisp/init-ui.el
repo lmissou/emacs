@@ -8,6 +8,7 @@
 (+use-package all-the-icons-dired)
 (+use-package doom-themes)
 (+use-package doom-modeline)
+(+use-package minimap)
 (+use-package "ligature")
 
 ;; 中文与外文字体设置函数
@@ -94,6 +95,15 @@
       doom-modeline-env-enable-perl nil
       doom-modeline-env-enable-elixir nil
       doom-modeline-env-enable-rust nil)
+;; minimap
+(setq minimap-window-location 'right
+      minimap-width-fraction 0.05
+      minimap-minimum-width 15
+      minimap-update-delay 0)
+(add-hook 'after-init-hook '(lambda ()
+			      (minimap-mode)
+			      (add-to-list 'minimap-major-modes 'text-mode)))
+(+leader-set-key "w m" 'minimap-mode "开关minimap")
 ;; 连字显示ligature.el
 ;; 需要设置英文字体为连字字体，如：
 ;; (+set-font   "FiraCode Nerd Font Mono" "WenQuanYi Micro Hei" 13 16)
