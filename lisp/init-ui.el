@@ -9,6 +9,7 @@
 (+use-package doom-themes)
 (+use-package doom-modeline)
 (+use-package minimap)
+(+use-package centaur-tabs)
 (+use-package "ligature")
 
 ;; 中文与外文字体设置函数
@@ -104,6 +105,15 @@
 			      (minimap-mode)
 			      (add-to-list 'minimap-major-modes 'text-mode)))
 (+leader-set-key "w m" 'minimap-mode "开关minimap")
+;; tabbar
+(setq centaur-tabs-set-icons t
+      centaur-tabs-style 'wave
+      centaur-tabs-set-bar 'under
+      x-underline-at-descent-line t)
+(+global-set-key "C-<iso-lefttab>" 'centaur-tabs-backward)
+(+global-set-key "C-<tab>" 'centaur-tabs-forward)
+(+leader-set-key "w t" 'centaur-tabs-mode "开关tabbar")
+(add-hook 'after-init-hook 'centaur-tabs-mode)
 ;; 连字显示ligature.el
 ;; 需要设置英文字体为连字字体，如：
 ;; (+set-font   "FiraCode Nerd Font Mono" "WenQuanYi Micro Hei" 13 16)
