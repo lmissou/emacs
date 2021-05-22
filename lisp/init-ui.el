@@ -102,8 +102,9 @@
       minimap-minimum-width 15
       minimap-update-delay 0)
 (add-hook 'after-init-hook '(lambda ()
-			      (minimap-mode)
-			      (add-to-list 'minimap-major-modes 'text-mode)))
+			      (when (display-graphic-p)
+				(minimap-mode)
+				(add-to-list 'minimap-major-modes 'text-mode))))
 (+leader-set-key "w m" 'minimap-mode "开关minimap")
 ;; tabbar
 (setq centaur-tabs-set-icons t
