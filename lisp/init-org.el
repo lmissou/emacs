@@ -73,21 +73,21 @@
 (+leader-set-key " o c" 'org-capture)
 (+leader-set-key " o a" 'org-agenda)
 ;; org-roam
-(defun +org-roam-start ()
-  (interactive)
-  (org-roam-mode t))
 (add-hook 'org-roam-mode-hook '(lambda ()
 				 (org-roam-server-mode t)
 				 (server-start)
 				 (require 'org-roam-protocol)))
-(+leader-set-key "o n" '+org-roam-start "开启org-roam")
 (setq org-roam-directory +roam-dir
       org-roam-capture-templates
       '(("d" "default" plain (function org-roam-capture--get-point)
          "%?"
          :file-name "${slug}"
          :head "#+title: ${title}\n#+date: %T\n")))
-(+leader-set-key "n l" 'org-roam)
+(defun +org-roam-start ()
+  (interactive)
+  (org-roam-mode t)
+  (org-roam))
+(+leader-set-key "n l" '+org-roam-start)
 (+leader-set-key "n f" 'org-roam-find-file)
 (+leader-set-key "n g" 'org-roam-graph)
 (+leader-set-key "n i" 'org-roam-insert)
