@@ -110,6 +110,7 @@
       centaur-tabs-style 'wave
       centaur-tabs-set-bar 'under
       x-underline-at-descent-line t)
+(add-hook 'special-mode-hook 'centaur-tabs-local-mode)
 (+global-set-key "C-<iso-lefttab>" 'centaur-tabs-backward)
 (+global-set-key "C-<tab>" 'centaur-tabs-forward)
 (+leader-set-key "w t" 'centaur-tabs-mode "开关tabbar")
