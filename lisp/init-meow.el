@@ -93,10 +93,10 @@
   (define-key meow-normal-state-keymap (kbd "SPC g") nil))
 (meow-global-mode 1)
 (setq meow--keypad-both-prefix ?a
-      meow-cursor-type-default '(hbar . 3)
-      meow-cursor-type-normal '(hbar . 3)
-      meow-cursor-type-motion '(hbar . 4)
-      meow-cursor-type-insert '(bar . 2)
+      meow-cursor-type-default '(bar . 3)
+      meow-cursor-type-normal '(bar . 3)
+      meow-cursor-type-motion '(bar . 3)
+      meow-cursor-type-insert '(bar . 1)
       meow-cursor-type-keypad 'hollow
       meow-replace-state-name-list
       '((normal . "")
