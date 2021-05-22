@@ -107,11 +107,18 @@
 				(add-to-list 'minimap-major-modes 'text-mode))))
 (+leader-set-key "w m" 'minimap-mode "开关minimap")
 ;; tabbar
+(defun +centaur-tabs-local-mode ()
+  "buffer名开头是*的buffer关闭tabbar"
+  (when (string-suffix-p "*" (buffer-name))
+    (centaur-tabs-local-mode)))
 (setq centaur-tabs-set-icons t
       centaur-tabs-style 'wave
       centaur-tabs-set-bar 'under
       x-underline-at-descent-line t)
-(add-hook 'special-mode-hook 'centaur-tabs-local-mode)
+(add-hook 'fundamental-mode-hook '+centaur-tabs-local-mode)
+(add-hook 'special-mode-hook '+centaur-tabs-local-mode)
+(add-hook 'text-mode-hook '+centaur-tabs-local-mode)
+(add-hook 'prog-mode-hook '+centaur-tabs-local-mode)
 (+global-set-key "C-<iso-lefttab>" 'centaur-tabs-backward)
 (+global-set-key "C-<tab>" 'centaur-tabs-forward)
 (+leader-set-key "w t" 'centaur-tabs-mode "开关tabbar")
