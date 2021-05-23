@@ -94,8 +94,7 @@
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
    '("/" . meow-visit)
-   '(":" . meow-goto-line)
-   '("<escape>" . meow-last-buffer))
+   '(":" . meow-goto-line))
   (define-key meow-normal-state-keymap (kbd "SPC g") nil))
 (meow-global-mode 1)
 (setq meow--keypad-both-prefix ?a
