@@ -8,4 +8,4 @@
 
 (setq eaf-proxy-host "127.0.0.1")
 (setq eaf-proxy-port "7891")
-(setq eaf-proxy-type "socks")
+(setq eaf-proxy-type "socks5")

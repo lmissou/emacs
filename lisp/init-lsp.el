@@ -5,7 +5,8 @@
 (+use-package dap-mode)
 
 ;; lsp
-(setq lsp-keymap-prefix (concat +leader-key " l"))
+(setq lsp-keymap-prefix (concat +leader-key " l")
+      lsp-session-file (+locate-tmp-file "lsp-session"))
 (+leader-set-key "g d" 'lsp-find-definition "跳转到定义")
 (+leader-set-key "g r" 'lsp-find-references "跳转到使用")
 (dolist (hook (list
@@ -46,6 +47,8 @@
       lsp-ui-sideline-enable t
       lsp-ui-sideline-ignore-duplicate t)
 ;; 调试程序 dap-mode
+(setq dap-breakpoints-file (+locate-tmp-file "dap-breakpoints")
+      dap-utils-extension-path (+locate-tmp-file "dap-extension"))
 (require 'dap-python)
 (require 'dap-node)
 (require 'dap-go)

@@ -1,7 +1,12 @@
+;; emacs临时文件夹
+(defun +locate-tmp-file (file-name)
+  (locate-user-emacs-file (concat ".cache/" file-name)))
 ;; 指定Customize文件位置（防止写入init.el）
-(setq custom-file (locate-user-emacs-file ".cache/custom.el"))
+(setq custom-file (+locate-tmp-file "custom.el"))
 ;; 加载自定义配置文件
 (setq +custom-file (locate-user-emacs-file "custom.el"))
+(unless (file-exists-p +custom-file)
+  (copy-file (locate-user-emacs-file "custom.el.example") +custom-file))
 (load +custom-file)
 
 ;; 自定义变量初始值
@@ -14,12 +19,13 @@
 ;; 禁止备份文件
 (setq make-backup-files nil)
 ;; 设置自动保存
-(defvar +auto-save-dirs (locate-user-emacs-file ".cache/auto-save-files/"))
+(defvar +auto-save-dirs (+locate-tmp-file "auto-save-files/"))
 (unless (file-exists-p +auto-save-dirs)
   (mkdir +auto-save-dirs))
 (setq auto-save-default t
       auto-save-file-name-transforms (list (list ".*" +auto-save-dirs t)))
-(setq recentf-max-menu-items 40)
+(setq recentf-max-menu-items 40
+      recentf-save-file (+locate-tmp-file "recentf"))
 ;; 开启图表缓存
 (setq inhibit-compacting-font-caches t)
 ;; 输入覆盖选中的块
@@ -34,5 +40,7 @@
 (put 'downcase-region 'disabled nil)
 ;; dired只保留一个buffer
 (put 'dired-find-alternate-file 'disabled nil)
+;; 设置bookmark文件位置
+(setq bookmark-file (+locate-tmp-file "bookmarks"))
 
 (provide 'init-basic)

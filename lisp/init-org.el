@@ -73,11 +73,8 @@
 (+leader-set-key " o c" 'org-capture)
 (+leader-set-key " o a" 'org-agenda)
 ;; org-roam
-(add-hook 'org-roam-mode-hook '(lambda ()
-				 (org-roam-server-mode t)
-				 (server-start)
-				 (require 'org-roam-protocol)))
-(setq org-roam-directory +roam-dir
+(setq org-roam-db-location (+locate-tmp-file "org-roam.db")
+      org-roam-directory +roam-dir
       org-roam-capture-templates
       '(("d" "default" plain (function org-roam-capture--get-point)
          "%?"
@@ -93,6 +90,10 @@
 (+leader-set-key "n g" 'org-roam-graph)
 (+leader-set-key "n i" 'org-roam-insert)
 (+leader-set-key "n I" 'org-roam-insert-immediate)
+(add-hook 'org-roam-mode-hook '(lambda ()
+				 (org-roam-server-mode t)
+				 (server-start)
+				 (require 'org-roam-protocol)))
 ;; org-roam-server
 (setq org-roam-server-host "127.0.0.1"
       org-roam-server-port 8088

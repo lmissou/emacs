@@ -35,6 +35,7 @@
 ;; 包裹选区
 (wrap-region-global-mode t)
 ;; 多光标
+(setq mc/list-file (+locate-tmp-file "mc-lists.el"))
 (multiple-cursors-mode t)
 (+global-set-key "C-S-<mouse-1>" 'mc/add-cursor-on-click)
 (+global-set-key "C-M-p" 'mc/mmlte--up)

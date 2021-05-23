@@ -5,7 +5,7 @@
 (+use-package s)
 (+use-package "eaf")
 
-(setq eaf-browser-continue-where-left-off t)
+(setq eaf-config-location (+locate-tmp-file "eaf"))
 (eaf-setq eaf-browser-enable-adblocker "true")
 (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
 (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)

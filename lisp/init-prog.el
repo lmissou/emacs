@@ -77,6 +77,8 @@
 (+leader-set-key "f s" 'save-buffer "保存文件")
 (+leader-set-key "f t" 'treemacs "开启/关闭文件目录")
 ;; projectile
+(setq projectile-known-projects-file (+locate-tmp-file "projectile-bookmarks.eld")
+      projectile-cache-file (+locate-tmp-file "projectile.cache"))
 (+leader-set-key "p p" 'projectile-command-map "更多命令")
 (+leader-set-key "p f" 'counsel-projectile-find-file "打开项目文件")
 (+leader-set-key "p b" 'counsel-projectile-switch-to-buffer "切换项目buffer")
