@@ -1,3 +1,4 @@
+(+use-package beacon)
 (+use-package smooth-scrolling)
 (+use-package popwin)
 (+use-package nyan-mode)
@@ -12,6 +13,8 @@
 (+use-package centaur-tabs)
 (+use-package "ligature")
 
+;; 解决Emacs在KDE下最大化出现间隙的问题
+(setq frame-resize-pixelwise t)
 ;; 中文与外文字体设置函数
 (defun +set-font (english chinese english-size chinese-size)
   "分别设置英文和中文字体达到中英文等宽"
@@ -47,6 +50,8 @@
 ;; 开启行号
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
+;; 切换buffer焦点时高亮动画
+(add-hook 'after-init-hook 'beacon-mode)
 ;; 平滑滚动
 (add-hook 'after-init-hook 'smooth-scrolling-mode)
 ;; popwin
@@ -101,10 +106,10 @@
       minimap-width-fraction 0.05
       minimap-minimum-width 15
       minimap-update-delay 0)
-(add-hook 'after-init-hook '(lambda ()
-			      (when (display-graphic-p)
-				(minimap-mode)
-				(add-to-list 'minimap-major-modes 'text-mode))))
+;; (add-hook 'after-init-hook '(lambda ()
+;; 			      (when (display-graphic-p)
+;; 				(minimap-mode)
+;; 				(add-to-list 'minimap-major-modes 'text-mode))))
 (+leader-set-key "w m" 'minimap-mode "开关minimap")
 ;; tabbar
 (defun +centaur-tabs-local-mode ()

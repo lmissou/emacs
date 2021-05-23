@@ -7,11 +7,17 @@
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
    '("j" . meow-next)
-   '("k" . meow-prev))
+   '("k" . meow-prev)
+   '("h" . meow-left)
+   '("l" . meow-right)
+   '("i" . meow-insert))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
    '("j" . meow-motion-origin-command)
    '("k" . meow-motion-origin-command)
+   '("h" . meow-motion-origin-command)
+   '("l" . meow-motion-origin-command)
+   '("i" . meow-motion-origin-command)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
