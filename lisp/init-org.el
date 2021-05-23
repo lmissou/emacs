@@ -85,7 +85,8 @@
          :head "#+title: ${title}\n#+date: %T\n")))
 (defun +org-roam-start ()
   (interactive)
-  (org-roam-mode t)
+  (unless org-roam-mode
+    (org-roam-mode t))
   (org-roam))
 (+leader-set-key "n l" '+org-roam-start)
 (+leader-set-key "n f" 'org-roam-find-file)
